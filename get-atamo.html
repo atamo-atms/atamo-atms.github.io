@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATAMO | Get ATAMO</title>
+  <meta name="description" content="Official public guide for obtaining ATAMO safely and verifying the correct token references.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .action-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .cta-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .button-secondary{
+      background:#fff;
+      border:1px solid #d8d8d8;
+      color:#333;
+    }
+    .warning-list{
+      margin:0;
+      padding-left:18px;
+    }
+    .warning-list li{
+      margin-bottom:10px;
+      color:var(--muted);
+    }
+    .token-box{
+      display:grid;
+      gap:12px;
+    }
+    .token-row{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      padding:12px 0;
+      border-bottom:1px solid var(--line);
+      align-items:flex-start;
+    }
+    .token-row:last-child{border-bottom:0}
+    .token-value{
+      max-width:62%;
+      text-align:right;
+      word-break:break-all;
+    }
+    @media (max-width:980px){
+      .action-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:760px){
+      .token-row{
+        flex-direction:column;
+        gap:8px;
+      }
+      .token-value{
+        max-width:100%;
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="ATAMO coin logo">
+      <span>ATAMO</span>
+    </a>
+    <nav class="nav-links">
+      <a href="security.html">Security</a>
+	  <a href="documentation.html">Documentation</a>
+	  <a href="contracts.html">Contracts</a>
+	  <a href="verify.html">Verify</a>
+	  <a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <h1>Get ATAMO</h1>
+      <p>Official public guidance for obtaining ATAMO and verifying that you are interacting with the correct token references.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Before you obtain ATAMO</h2>
+      <p class="section-sub">Always verify the token address, the official website, and the destination platform before interacting with any wallet or exchange.</p>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Official token reference</h3>
+          <div class="token-box">
+            <div class="token-row">
+              <strong>Name</strong>
+              <span class="token-value">ATAMO</span>
+            </div>
+            <div class="token-row">
+              <strong>Symbol</strong>
+              <span class="token-value">ATMS</span>
+            </div>
+            <div class="token-row">
+              <strong>Network</strong>
+              <span class="token-value">Ethereum Mainnet</span>
+            </div>
+            <div class="token-row">
+              <strong>Token Proxy</strong>
+              <span class="token-value"><span class="code">0x2e37FaCBA45c3Dc73073899c817d0C55Ee6c7b82</span></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Security checks</h3>
+          <ul class="warning-list">
+            <li>Use only the official ATAMO website and published contract references.</li>
+            <li>Never trust a token address copied from chat messages, social posts, or screenshots.</li>
+            <li>Verify the contract on the contracts page and blockchain explorer before swapping.</li>
+            <li>Start with a small test transaction before making a larger purchase.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Ways to obtain ATAMO</h2>
+      <p class="section-sub">This page can support one or more acquisition methods. Keep only the methods that are officially active.</p>
+
+      <div class="action-grid">
+        <article class="card">
+          <h3>Option 1 — Decentralized exchange</h3>
+          <p>Link users to the official trading route for ATAMO on a supported decentralized exchange once the pool is live.</p>
+          <div class="cta-row">
+            <a class="button button-primary" href="#" target="_blank" rel="noopener noreferrer">Add official swap link</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Option 2 — Centralized exchange</h3>
+          <p>If ATAMO is listed on an exchange, publish only the exact official market link here.</p>
+          <div class="cta-row">
+            <a class="button button-secondary" href="#" target="_blank" rel="noopener noreferrer">Add exchange link</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Option 3 — Direct distribution</h3>
+          <p>If ATAMO will ever be distributed through an official claim, sale, or treasury process, publish the exact official instructions here.</p>
+          <div class="cta-row">
+            <a class="button button-secondary" href="#" target="_blank" rel="noopener noreferrer">Add official instructions</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Recommended user process</h2>
+      <div class="steps">
+        <div class="step">
+          <strong>1. Verify the token address</strong>
+          Confirm the official token address on the contracts page before interacting with any service.
+        </div>
+        <div class="step">
+          <strong>2. Use an official acquisition route</strong>
+          Follow only the official swap, exchange, or distribution link published on this website.
+        </div>
+        <div class="step">
+          <strong>3. Re-check after acquisition</strong>
+          Confirm that the received token matches the official ATAMO contract reference in your wallet or explorer.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="notice">
+        Replace placeholder buttons with the exact official acquisition links only after they are publicly active and verified.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:12px;">
+        <img src="logo.png" alt="ATAMO coin logo">
+        <span>ATAMO</span>
+      </div>
+      <p>This is the official website of the ATAMO Token.</p>
+    </div>
+    <div>
+      <h3>Pages</h3>
+      <div class="footer-links">
+        <a href="documentation.html">Documentation</a>
+        <a href="contracts.html">Contracts</a>
+        <a href="security.html">Security Policy</a>
+      </div>
+    </div>
+    <div>
+      <h3>More</h3>
+      <div class="footer-links">
+        <a href="verify.html">Verification Guide</a>
+        <a href="index.html#architecture">Architecture</a>
+        <a href="index.html#resources">Resources</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATAMO | Contracts</title>
+  <meta name="description" content="Official deployment registry and public contract references for the ATAMO system.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .kv-row{align-items:flex-start}
+    .ref-link{
+      color: var(--gold-dark);
+      font-weight: 700;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .ref-link:hover{text-decoration: underline;}
+    .address-block{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:6px;
+      max-width:62%;
+    }
+    .address-block .code{
+      text-align:right;
+      white-space:normal;
+      overflow-wrap:anywhere;
+    }
+    @media (max-width: 760px){
+      .address-block{
+        max-width:100%;
+        align-items:flex-start;
+      }
+      .address-block .code{
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="ATAMO coin logo">
+      <span>ATAMO</span>
+    </a>
+    <nav class="nav-links">
+      <a href="security.html">Security</a>
+	  <a href="documentation.html">Documentation</a>
+	  <a href="contracts.html">Contracts</a>
+	  <a href="verify.html">Verify</a>
+	  <a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <h1>Contracts</h1>
+      <p>Official deployment registry and public contract references for the ATAMO system.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Official deployment registry</h2>
+      <p class="section-sub">This page is the public reference for official ATAMO mainnet deployment addresses. All addresses below should be verified against public blockchain records before interaction.</p>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>ATAMO Token</h3>
+          <div class="kv">
+            <div class="kv-row">
+              <strong>Token Proxy</strong>
+              <div class="address-block">
+                <span class="code">0x2e37FaCBA45c3Dc73073899c817d0C55Ee6c7b82</span>
+                <a class="ref-link" href="https://etherscan.io/address/0x2e37FaCBA45c3Dc73073899c817d0C55Ee6c7b82" target="_blank" rel="noopener noreferrer">View on Etherscan</a>
+              </div>
+            </div>
+            <div class="kv-row">
+              <strong>Token Implementation</strong>
+              <div class="address-block">
+                <span class="code">0x8d7896bf6326cf1A17496136D13a3C8C916d07f9</span>
+                <a class="ref-link" href="https://etherscan.io/address/0x8d7896bf6326cf1A17496136D13a3C8C916d07f9" target="_blank" rel="noopener noreferrer">View on Etherscan</a>
+              </div>
+            </div>
+            <div class="kv-row">
+              <strong>Token Governance</strong>
+              <div class="address-block">
+                <span class="code">0x90a8215E7c9a7993927C7e9f1De48808548ac491</span>
+                <a class="ref-link" href="https://etherscan.io/address/0x90a8215E7c9a7993927C7e9f1De48808548ac491" target="_blank" rel="noopener noreferrer">View on Etherscan</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Timelock</h3>
+          <div class="kv">
+            <div class="kv-row">
+              <strong>Timelock Proxy</strong>
+              <div class="address-block">
+                <span class="code">0x3a4Df2897ae83C71Cc9720404891Ff55B6Df786e</span>
+                <a class="ref-link" href="https://etherscan.io/address/0x3a4Df2897ae83C71Cc9720404891Ff55B6Df786e" target="_blank" rel="noopener noreferrer">View on Etherscan</a>
+              </div>
+            </div>
+            <div class="kv-row">
+              <strong>Timelock Implementation</strong>
+              <div class="address-block">
+                <span class="code">0xaa6aC50f21fFA895C0F1e5446E41f34Bb3c7FE5c</span>
+                <a class="ref-link" href="https://etherscan.io/address/0xaa6aC50f21fFA895C0F1e5446E41f34Bb3c7FE5c" target="_blank" rel="noopener noreferrer">View on Etherscan</a>
+              </div>
+            </div>
+            <div class="kv-row"><strong>Execution Delay</strong><span class="code">2 days</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Custodian</h3>
+          <div class="kv">
+            <div class="kv-row">
+              <strong>Multisig Safe</strong>
+              <div class="address-block">
+                <span class="code">0xe3b72bdb899364ce86949746D31CCba5f384b949</span>
+                <a class="ref-link" href="https://etherscan.io/address/0xe3b72bdb899364ce86949746D31CCba5f384b949" target="_blank" rel="noopener noreferrer">View on Etherscan</a>
+              </div>
+            </div>
+            <div class="kv-row"><strong>Threshold</strong><span class="code">2 of 3</span></div>
+            <div class="kv-row"><strong>Network</strong><span class="code">Ethereum Mainnet</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Verification references</h3>
+          <div class="kv">
+            <div class="kv-row">
+              <strong>Block Explorer</strong>
+              <a class="ref-link" href="https://etherscan.io/" target="_blank" rel="noopener noreferrer">etherscan.io</a>
+            </div>
+            <div class="kv-row">
+              <strong>Source Repository</strong>
+              <span class="code">Add official repository URL</span>
+            </div>
+            <div class="kv-row">
+              <strong>Release Tag</strong>
+              <span class="code">Add deployment release tag</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="notice">
+        Always compare the addresses listed here with verified blockchain records and the official source repository before interacting with the ATAMO system.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:12px;">
+        <img src="logo.png" alt="ATAMO coin logo">
+        <span>ATAMO</span>
+      </div>
+      <p>This is the official website of the ATAMO Token.</p>
+    </div>
+    <div>
+      <h3>Pages</h3>
+      <div class="footer-links">
+        <a href="documentation.html">Documentation</a>
+        <a href="contracts.html">Contracts</a>
+        <a href="security.html">Security Policy</a>
+      </div>
+    </div>
+    <div>
+      <h3>More</h3>
+      <div class="footer-links">
+        <a href="verify.html">Verification Guide</a>
+        <a href="index.html#architecture">Architecture</a>
+        <a href="index.html#resources">Resources</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
