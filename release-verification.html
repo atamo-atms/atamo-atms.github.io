@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATAMO | Release Verification</title>
+<meta name="description" content="Instructions for verifying official ATAMO releases using PGP signatures.">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top">
+
+<header class="topbar">
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="ATAMO logo">
+      <span>ATAMO</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="security.html">Security</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="contracts.html">Contracts</a>
+      <a href="verify.html">Verify</a>
+      <a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+<div class="container page-hero-inner">
+
+<h1>Release Verification</h1>
+
+<p>
+Official ATAMO releases are cryptographically signed using PGP.  
+This allows anyone to independently verify that a release was created by the project maintainers.
+</p>
+
+</div>
+</section>
+
+
+<section>
+<div class="container">
+
+<h2 class="section-title">Public signing key</h2>
+
+<p class="section-sub">
+All official ATAMO releases are signed using the project's public PGP key.
+</p>
+
+<div class="card">
+
+<p>
+<strong>Public key location:</strong>
+</p>
+
+<p>
+<span class="code">https://atamo-atms.org/.well-known/pgp-key.txt</span>
+</p>
+
+<p>
+<strong>PGP fingerprint:</strong>
+</p>
+
+<p>
+<span class="code">05E5 39A2 05D1 33DE 4446  0BD6 3311 09D8 AFF8 B090</span>
+</p>
+
+<p>
+<strong>GitHub reference:</strong>
+</p>
+
+<p>
+<a href="https://github.com/atamo-atms/atamo-project" target="_blank" rel="noopener noreferrer">
+github.com/atamo-atms/atamo-project
+</a>
+</p>
+
+</div>
+
+</div>
+</section>
+
+
+<section>
+<div class="container">
+
+<h2 class="section-title">How to verify a release</h2>
+
+<div class="steps">
+
+<div class="step">
+<strong>1. Import the ATAMO public key</strong>
+
+<p class="code">
+curl -O https://atamo-atms.org/.well-known/pgp-key.txt
+gpg --import pgp-key.txt
+</p>
+
+</div>
+
+<div class="step">
+<strong>2. Download the release and signature</strong>
+
+<p>
+Download the release archive and corresponding <span class="code">.asc</span> signature from the official GitHub releases page.
+</p>
+
+</div>
+
+<div class="step">
+<strong>3. Verify the signature</strong>
+
+<p class="code">
+gpg --verify release.tar.gz.asc release.tar.gz
+</p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<section>
+<div class="container">
+
+<div class="notice">
+Always verify releases against the official repository and PGP signature before using them in production environments.
+</div>
+
+</div>
+</section>
+
+</main>
+
+
+<section class="official-links">
+<div class="container">
+
+<h2>Official Links</h2>
+
+<ul>
+<li><a href="https://atamo-atms.org">Website</a></li>
+<li><a href="https://github.com/atamo-atms">GitHub</a></li>
+<li><a href="/.well-known/security.txt">security.txt</a></li>
+<li><a href="/.well-known/pgp-key.txt">PGP Key</a></li>
+</ul>
+
+</div>
+</section>
+
+
+<footer>
+<div class="container footer-grid">
+
+    <div>
+      <div class="brand">
+        <img src="logo.png" alt="ATAMO logo">
+        <span>ATAMO</span>
+      </div>
+
+      <p>Governance-driven digital asset protocol.</p>
+
+      <p>
+        Official website:
+        <a href="https://atamo-atms.org">atamo-atms.org</a>
+      </p>
+
+      <p>
+        GitHub:
+        <a href="https://github.com/atamo-atms">github.com/atamo-atms</a>
+      </p>
+    </div>
+
+<div>
+<h3>Site</h3>
+<div class="footer-links">
+<a href="security.html">Security</a>
+<a href="documentation.html">Documentation</a>
+<a href="get-atamo.html">Get ATAMO</a>
+</div>
+</div>
+
+<div>
+<h3>Resources</h3>
+<div class="footer-links">
+<a href="contracts.html">Contracts</a>
+<a href="verify.html">Verify</a>
+<a href="release-verification.html">Release Verification</a>
+<a href="#top">Back to top</a>
+</div>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 ATAMO. All rights reserved.</p>
+</div>
+
+</footer>
+
+</body>
+</html>

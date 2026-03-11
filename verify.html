@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ATAMO | Verification Guide</title>
+  <meta name="description" content="A public guide showing how users can independently verify the authenticity of the ATAMO system.">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="top">
 
 <header class="topbar">
   <div class="container nav">
@@ -16,10 +17,10 @@
     </a>
     <nav class="nav-links">
       <a href="security.html">Security</a>
-	  <a href="documentation.html">Documentation</a>
-	  <a href="contracts.html">Contracts</a>
-	  <a href="verify.html">Verify</a>
-	  <a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="contracts.html">Contracts</a>
+      <a href="verify.html">Verify</a>
+      <a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
     </nav>
   </div>
 </header>
@@ -32,73 +33,144 @@
     </div>
   </section>
 
-<section>
-  <div class="container">
-    <h2 class="section-title">How to verify ATAMO</h2>
-    <p class="section-sub">Users should rely on official public references and independent blockchain verification rather than screenshots, social posts, or copied addresses.</p>
-    <div class="steps">
-      <div class="step">
-        <strong>1. Verify the domain</strong>
-        Confirm that you are using the official ATAMO website and not a look-alike domain.
-      </div>
-      <div class="step">
-        <strong>2. Verify the contracts</strong>
-        Compare the published addresses on the contracts page with verified blockchain records.
-      </div>
-      <div class="step">
-        <strong>3. Verify the source reference</strong>
-        Match the deployment against the official repository, release notes, and public documentation.
-      </div>
-    </div>
-  </div>
-</section>
+  <section>
+    <div class="container">
+      <h2 class="section-title">How to verify ATAMO</h2>
+      <p class="section-sub">
+        Users should rely on official public references and independent blockchain verification rather than screenshots, social posts, or copied addresses.
+      </p>
+	  
+	  <div class="grid grid-2 verify-panels">
+		<article class="card">
+			<h3>Quick verification checklist</h3>
+			<ul>
+				<li>Verify you are on the official domain: <span class="code">atamo-atms.org</span></li>
+				<li>Confirm contract addresses on the <a class="resource-link" href="contracts.html">contracts page</a></li>
+				<li>Compare sources with the official <a class="resource-link" href="https://github.com/atamo-atms" target="_blank" rel="noopener noreferrer">GitHub repository</a></li>
+				<li>Verify release signatures using the <a class="resource-link" href="release-verification.html">PGP verification guide</a></li>
+			</ul>
+		</article>
 
-<section>
-  <div class="container">
-    <div class="grid grid-3">
-      <article class="card">
-        <h3>Contracts page</h3>
-        <p>Use the official contracts registry to confirm token, timelock, governance, and multisig references.</p>
-      </article>
-      <article class="card">
-        <h3>Security policy</h3>
-        <p>Review the published disclosure channel and the security principles of the system.</p>
-      </article>
-      <article class="card">
-        <h3>Documentation</h3>
-        <p>Use public documentation to understand the intended architecture and governance model.</p>
-      </article>
+		<article class="card">
+			<h3>Release verification</h3>
+			<p>
+				Official ATAMO releases are cryptographically signed using PGP.
+				This allows anyone to verify that the release artifacts were produced by the project maintainers.
+				</p>
+			<a class="resource-link" href="release-verification.html">View release verification guide</a>
+		</article>
+	  </div>
+
+      <div class="steps">
+
+		<div class="step">
+			<strong>1. Start from the official domain</strong>
+			Begin only from <span class="code">atamo-atms.org</span> and avoid links copied from chats, posts, or screenshots.
+		</div>
+
+		<div class="step">
+			<strong>2. Confirm the official contract references</strong>
+			Open the contracts page and compare the published addresses with blockchain explorer records before interacting with any token or platform.
+		</div>
+
+		<div class="step">
+			<strong>3. Match the release and source references</strong>
+			Compare the deployment references with the official GitHub repository, release tag, and public documentation.
+		</div>
+
+		<div class="step">
+			<strong>4. Verify signed release artifacts when available</strong>
+			Use the published PGP key and release verification guide to confirm that release files were signed by the project maintainers.
+		</div>
+
+	  </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="grid grid-3">
+
+        <article class="card">
+          <h3>Contracts page</h3>
+          <p>Use the official contracts registry to confirm token, timelock, governance, and multisig references.</p>
+        </article>
+
+        <article class="card">
+          <h3>Security policy</h3>
+          <p>Review the published disclosure channel and the security principles of the system.</p>
+        </article>
+
+        <article class="card">
+          <h3>Documentation</h3>
+          <p>Use public documentation to understand the intended architecture and governance model.</p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
 
 </main>
 
+<section class="official-links">
+  <div class="container">
+    <h2>Official Links</h2>
+    <ul>
+      <li><a href="https://atamo-atms.org">Website</a></li>
+      <li><a href="https://github.com/atamo-atms">GitHub</a></li>
+      <li><a href="/.well-known/security.txt">security.txt</a></li>
+      <li><a href="/.well-known/pgp-key.txt">PGP Key</a></li>
+    </ul>
+  </div>
+</section>
+
 <footer>
   <div class="container footer-grid">
-    <div>
-      <div class="brand" style="margin-bottom:12px;">
-        <img src="logo.png" alt="ATAMO coin logo">
+
+        <div>
+      <div class="brand">
+        <img src="logo.png" alt="ATAMO logo">
         <span>ATAMO</span>
       </div>
-      <p>This is the official website of the ATAMO Token.</p>
+
+      <p>Governance-driven digital asset protocol.</p>
+
+      <p>
+        Official website:
+        <a href="https://atamo-atms.org">atamo-atms.org</a>
+      </p>
+
+      <p>
+        GitHub:
+        <a href="https://github.com/atamo-atms">github.com/atamo-atms</a>
+      </p>
     </div>
+
     <div>
-      <h3>Pages</h3>
+      <h3>Site</h3>
       <div class="footer-links">
+        <a href="security.html">Security</a>
         <a href="documentation.html">Documentation</a>
-        <a href="contracts.html">Contracts</a>
-        <a href="security.html">Security Policy</a>
+        <a href="get-atamo.html">Get ATAMO</a>
       </div>
     </div>
+
     <div>
-      <h3>More</h3>
+      <h3>Resources</h3>
       <div class="footer-links">
-        <a href="verify.html">Verification Guide</a>
-        <a href="index.html#architecture">Architecture</a>
-        <a href="index.html#resources">Resources</a>
+        <a href="contracts.html">Contracts</a>
+        <a href="verify.html">Verify</a>
+		<a href="release-verification.html">Release Verification</a>
+        <a href="#top">Back to top</a>
       </div>
     </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 ATAMO. All rights reserved.</p>
   </div>
 </footer>
 

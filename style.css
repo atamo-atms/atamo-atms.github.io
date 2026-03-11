@@ -14,6 +14,7 @@
 }
 
 *{box-sizing:border-box}
+
 html{
   scroll-behavior:smooth;
   scroll-padding-top:60px;
@@ -80,7 +81,9 @@ img{max-width:100%;display:block}
   color:var(--muted);
 }
 
-.nav-links a:hover{color:var(--gold-dark)}
+.nav-links a:hover{
+  color:var(--gold-dark);
+}
 
 .button{
   display:inline-flex;
@@ -100,7 +103,7 @@ img{max-width:100%;display:block}
 
 .button-secondary{
   background:#fff;
-  border-color:#d8d8d8;
+  border:1px solid #d8d8d8;
   color:#333;
 }
 
@@ -134,6 +137,56 @@ img{max-width:100%;display:block}
   display:flex;
   gap:14px;
   flex-wrap:wrap;
+}
+
+.protocol-status{
+  padding:70px 20px;
+  background:#151922;
+  text-align:center;
+  color:#e8eefc;
+}
+
+.protocol-status h2{
+  margin:0 0 10px;
+  color:#ffffff;
+}
+
+.status-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
+  margin-top:35px;
+}
+
+.status-item{
+  padding:25px;
+  background:#1f2531;
+  border-radius:10px;
+  border:1px solid #2f3748;
+  transition:transform 0.2s ease;
+}
+
+.status-item strong{
+  display:block;
+  font-size:0.9rem;
+  letter-spacing:1px;
+  color:#a9bbda;
+  margin-bottom:8px;
+}
+
+.status-item p{
+  font-size:1.1rem;
+  font-weight:600;
+  color:#ffffff;
+  margin:0;
+}
+
+.status-item a{
+  color:#ffffff;
+}
+
+.status-item:hover{
+  transform:translateY(-4px);
 }
 
 .coin-panel{
@@ -266,9 +319,20 @@ main section{
   box-shadow:var(--shadow);
 }
 
-.card h2,.card h3{margin-top:0}
-.card p,.card li{color:var(--muted)}
-.card ul{margin:0;padding-left:18px}
+.card h2,
+.card h3{
+  margin-top:0;
+}
+
+.card p,
+.card li{
+  color:var(--muted);
+}
+
+.card ul{
+  margin:0;
+  padding-left:18px;
+}
 
 .kv{
   display:grid;
@@ -278,12 +342,15 @@ main section{
 .kv-row{
   display:flex;
   justify-content:space-between;
+  align-items:flex-start;
   gap:18px;
   padding:12px 0;
   border-bottom:1px solid var(--line);
 }
 
-.kv-row:last-child{border-bottom:0}
+.kv-row:last-child{
+  border-bottom:0;
+}
 
 .code{
   font-family:Consolas,Monaco,monospace;
@@ -295,6 +362,77 @@ main section{
   word-break:break-all;
 }
 
+.ref-link{
+  color:var(--gold-dark);
+  font-weight:700;
+  text-decoration:none;
+  word-break:break-all;
+}
+
+.ref-link:hover{
+  text-decoration:underline;
+}
+
+.address-block{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  align-items:flex-end;
+  text-align:right;
+}
+
+.address-block .code{
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+
+.token-box{
+  display:grid;
+  gap:12px;
+}
+
+.token-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:18px;
+  padding:12px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.token-row:last-child{
+  border-bottom:0;
+}
+
+.token-value{
+  text-align:right;
+  max-width:62%;
+  word-break:break-all;
+}
+
+.action-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.cta-row{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.warning-list{
+  margin:0;
+  padding-left:18px;
+}
+
+.warning-list li{
+  margin-bottom:10px;
+  color:var(--muted);
+}
+
 .notice{
   border-left:4px solid var(--gold);
   padding:14px 16px;
@@ -303,9 +441,23 @@ main section{
   color:var(--muted);
 }
 
+.verify-panels{
+  margin-bottom:24px;
+}
+
+.verify-panels .card ul{
+  margin:0;
+  padding-left:18px;
+}
+
+.verify-panels .card li{
+  margin-bottom:10px;
+}
+
 .steps{
   display:grid;
   gap:16px;
+  margin-top:24px;
 }
 
 .step{
@@ -320,6 +472,25 @@ main section{
   display:block;
   margin-bottom:8px;
   color:var(--text);
+}
+
+.official-links{
+  padding:60px 20px;
+  text-align:center;
+}
+
+.official-links h2{
+  margin:0 0 16px;
+}
+
+.official-links ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.official-links li{
+  margin:8px 0;
 }
 
 footer{
@@ -341,6 +512,13 @@ footer{
   gap:10px;
 }
 
+.footer-bottom{
+  text-align:center;
+  padding-top:20px;
+  font-size:0.9rem;
+  opacity:0.7;
+}
+
 .small{
   font-size:.95rem;
 }
@@ -352,7 +530,8 @@ footer{
   .architecture,
   .grid-4,.grid-3,.grid-2,
   .split,
-  .footer-grid{
+  .footer-grid,
+  .action-grid{
     grid-template-columns:1fr 1fr;
   }
 }
@@ -375,7 +554,8 @@ footer{
   .architecture,
   .grid-4,.grid-3,.grid-2,
   .split,
-  .footer-grid{
+  .footer-grid,
+  .action-grid{
     grid-template-columns:1fr;
   }
 
@@ -385,5 +565,17 @@ footer{
 
   .hero-inner{
     padding:38px 0 32px;
+  }
+
+  .address-block,
+  .token-value{
+    align-items:flex-start;
+    text-align:left;
+    max-width:100%;
+  }
+
+  .token-row{
+    flex-direction:column;
+    gap:8px;
   }
 }

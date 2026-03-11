@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ATAMO | Security Policy</title>
+  <meta name="description" content="Responsible disclosure information and core security principles for the ATAMO project.">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="top">
 
 <header class="topbar">
   <div class="container nav">
@@ -14,17 +15,19 @@
       <img src="logo.png" alt="ATAMO coin logo">
       <span>ATAMO</span>
     </a>
+
     <nav class="nav-links">
       <a href="security.html">Security</a>
-	  <a href="documentation.html">Documentation</a>
-	  <a href="contracts.html">Contracts</a>
-	  <a href="verify.html">Verify</a>
-	  <a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="contracts.html">Contracts</a>
+      <a href="verify.html">Verify</a>
+      <a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
     </nav>
   </div>
 </header>
 
 <main>
+
   <section class="page-hero">
     <div class="container page-hero-inner">
       <h1>Security Policy</h1>
@@ -32,83 +35,148 @@
     </div>
   </section>
 
-<section>
-  <div class="container">
-    <h2 class="section-title">Responsible disclosure</h2>
-    <p class="section-sub">ATAMO encourages responsible private disclosure of potential vulnerabilities. Public disclosure should be avoided until the issue has been reviewed and, where appropriate, addressed.</p>
-    <div class="grid grid-2">
-      <article class="card">
-        <h3>Contact</h3>
-        <p>Report security issues privately through the official security contact.</p>
-        <p><strong>Email:</strong> <span class="code">security@atamo-atms.org</span></p>
-      </article>
-      <article class="card">
-        <h3>Disclosure expectations</h3>
-        <ul>
-          <li>Provide a clear description of the issue.</li>
-          <li>Include reproduction steps where possible.</li>
-          <li>Allow time for review before public discussion.</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
+  <section>
+    <div class="container">
+      <h2 class="section-title">Responsible disclosure</h2>
+      <p class="section-sub">
+        ATAMO encourages responsible private disclosure of potential vulnerabilities. Public disclosure should be avoided until the issue has been reviewed and, where appropriate, addressed.
+      </p>
 
-<section>
-  <div class="container">
-    <h2 class="section-title">Security principles</h2>
-    <div class="grid grid-3">
-      <article class="card">
-        <h3>Multi-signature control</h3>
-        <p>Sensitive authority is intended to be managed through a multisignature structure rather than a single administrative wallet.</p>
-      </article>
-      <article class="card">
-        <h3>Timelocked execution</h3>
-        <p>Critical administrative actions must pass through a review period before execution, supporting transparency and external monitoring.</p>
-      </article>
-      <article class="card">
-        <h3>Minimal web attack surface</h3>
-        <p>The official website is static and informational, reducing unnecessary server-side complexity.</p>
-      </article>
-    </div>
-  </div>
-</section>
+      <div class="grid grid-2">
 
-<section>
-  <div class="container">
-    <div class="notice">
-      Governance activity should be monitored through the public blockchain, the official contracts page, and the verification guidance published by the project.
+        <article class="card">
+			<h3>Security contact</h3>
+
+			<p>
+				Security reports should be sent through the official disclosure channel.
+				The contact address is published in the project’s security.txt file.
+			</p>
+
+			<p>
+				Encrypted communication is supported using the ATAMO public PGP key.
+			</p>
+
+			<p>
+				<strong>Security.txt:</strong>
+					<a class="resource-link" href="/.well-known/security.txt">View security contact</a>
+			</p>
+
+			<p>
+				<strong>PGP Key:</strong>
+					<a class="resource-link" href="/.well-known/pgp-key.txt">Download public key</a>
+			</p>
+
+			<p>
+				<strong>PGP Fingerprint:</strong><br>
+				<span class="code">05E5 39A2 05D1 33DE 4446  0BD6 3311 09D8 AFF8 B090</span>
+			</p>
+		</article>
+
+        <article class="card">
+          <h3>Disclosure expectations</h3>
+          <ul>
+            <li>Provide a clear description of the issue.</li>
+            <li>Include reproduction steps where possible.</li>
+            <li>Allow time for review before public discussion.</li>
+          </ul>
+        </article>
+
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Security principles</h2>
+
+      <div class="grid grid-3">
+
+        <article class="card">
+          <h3>Multi-signature control</h3>
+          <p>Sensitive authority is intended to be managed through a multisignature structure rather than a single administrative wallet.</p>
+        </article>
+
+        <article class="card">
+          <h3>Timelocked execution</h3>
+          <p>Critical administrative actions must pass through a review period before execution, supporting transparency and external monitoring.</p>
+        </article>
+
+        <article class="card">
+          <h3>Minimal web attack surface</h3>
+          <p>The official website is static and informational, reducing unnecessary server-side complexity.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="notice">
+        Governance activity should be monitored through the public blockchain, the official contracts page, and the verification guidance published by the project.
+      </div>
+    </div>
+  </section>
 
 </main>
 
+<section class="official-links">
+  <div class="container">
+    <h2>Official Links</h2>
+    <ul>
+      <li><a href="https://atamo-atms.org">Website</a></li>
+      <li><a href="https://github.com/atamo-atms">GitHub</a></li>
+      <li><a href="/.well-known/security.txt">security.txt</a></li>
+      <li><a href="/.well-known/pgp-key.txt">PGP Key</a></li>
+    </ul>
+  </div>
+</section>
+
 <footer>
   <div class="container footer-grid">
+
     <div>
-      <div class="brand" style="margin-bottom:12px;">
-        <img src="logo.png" alt="ATAMO coin logo">
+      <div class="brand">
+        <img src="logo.png" alt="ATAMO logo">
         <span>ATAMO</span>
       </div>
-      <p>This is the official website of the ATAMO Token.</p>
+
+      <p>Governance-driven digital asset protocol.</p>
+
+      <p>
+        Official website:
+        <a href="https://atamo-atms.org">atamo-atms.org</a>
+      </p>
+
+      <p>
+        GitHub:
+        <a href="https://github.com/atamo-atms">github.com/atamo-atms</a>
+      </p>
     </div>
+
     <div>
-      <h3>Pages</h3>
+      <h3>Site</h3>
       <div class="footer-links">
+        <a href="security.html">Security</a>
         <a href="documentation.html">Documentation</a>
-        <a href="contracts.html">Contracts</a>
-        <a href="security.html">Security Policy</a>
+        <a href="get-atamo.html">Get ATAMO</a>
       </div>
     </div>
+
     <div>
-      <h3>More</h3>
+      <h3>Resources</h3>
       <div class="footer-links">
-        <a href="verify.html">Verification Guide</a>
-        <a href="index.html#architecture">Architecture</a>
-        <a href="index.html#resources">Resources</a>
+        <a href="contracts.html">Contracts</a>
+        <a href="verify.html">Verify</a>
+		<a href="release-verification.html">Release Verification</a>
+        <a href="#top">Back to top</a>
       </div>
     </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 ATAMO. All rights reserved.</p>
   </div>
 </footer>
 

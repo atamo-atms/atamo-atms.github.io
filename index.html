@@ -1,234 +1,288 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ATAMO | Peer-to-Peer Digital Value</title>
+  <meta name="description" content="Official public reference website for the ATAMO project, including documentation, contracts, verification guidance, and security information.">
   <link rel="stylesheet" href="style.css">
 </head>
-
-<body>
+<body id="top">
 
 <header class="topbar">
-<div class="container nav">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="ATAMO logo">
+      <span>ATAMO</span>
+    </a>
 
-<a href="#" class="brand">
-<img src="logo.png">
-<span>ATAMO</span>
-</a>
-
-<nav class="nav-links">
-<a href="security.html">Security</a>
-<a href="documentation.html">Documentation</a>
-<a href="contracts.html">Contracts</a>
-<a href="verify.html">Verify</a>
-<a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
-</nav>
-
-</div>
+    <nav class="nav-links">
+      <a href="security.html">Security</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="contracts.html">Contracts</a>
+      <a href="verify.html">Verify</a>
+      <a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
+    </nav>
+  </div>
 </header>
 
 <main>
 
-<section class="hero">
-<div class="container hero-inner">
+  <section class="hero">
+    <div class="container hero-inner">
 
-<div>
-<h2>ATAMO is a security-focused digital value system built on deliberate governance, transparent rules, and verifiable public infrastructure.</h2>
+      <div>
+        <h2>ATAMO is a security-focused digital value system built on deliberate governance, transparent rules, and verifiable public infrastructure.</h2>
 
-<p>
-This website serves as the official public reference for the ATAMO project. It provides documentation, verified information, and direct access to the resources required to understand and independently verify the system.
-</p>
+        <p>
+          This website serves as the official public reference for the ATAMO project. It provides documentation, verified information, and direct access to the resources required to understand and independently verify the system.
+        </p>
+      </div>
 
-</div>
+      <aside class="coin-panel">
+        <img src="logo.png" alt="ATAMO logo">
+        <div class="coin-meta">
+          <div><strong>Name:</strong> ATAMO</div>
+          <div><strong>Symbol:</strong> ATMS</div>
+          <div><strong>Max Supply:</strong> 200,000,000</div>
+        </div>
+      </aside>
 
-<aside class="coin-panel">
-<img src="logo.png">
-<div class="coin-meta">
-<div><strong>Name:</strong> ATAMO</div>
-<div><strong>Symbol:</strong> ATMS</div>
-<div><strong>Max Supply:</strong> 200,000,000</div>
-</div>
-</aside>
+    </div>
+  </section>
 
-</div>
-</section>
+  <section class="protocol-status">
+    <div class="container">
 
+      <h2>Protocol Status</h2>
 
-<section id="features">
-<div class="container">
+      <div class="status-grid">
+        <div class="status-item">
+          <strong>🌐 Network</strong>
+          <p>Ethereum Mainnet</p>
+        </div>
 
-<h2 class="section-title">Why use ATAMO</h2>
+        <div class="status-item">
+          <strong>🪙 Token</strong>
+          <p>ATAMO</p>
+        </div>
 
-<p class="section-sub">
-ATAMO is designed as a disciplined digital value system built around transparency, security, and deliberate governance.
-</p>
+        <div class="status-item">
+          <strong>⚖️ Governance</strong>
+          <p>Timelock + Multisig</p>
+        </div>
 
-<div class="feature-grid">
+        <div class="status-item">
+          <strong>📜 Contracts</strong>
+          <p><a href="contracts.html">View Deployment</a></p>
+        </div>
+      </div>
 
-<div class="card">
-<h3>Transparent governance</h3>
-<p>Administrative actions follow structured governance rather than hidden control.</p>
-</div>
+    </div>
+  </section>
 
-<div class="card">
-<h3>Deliberation before execution</h3>
-<p>Timelock delays allow public monitoring before protocol changes are executed.</p>
-</div>
+  <section id="features">
+    <div class="container">
 
-<div class="card">
-<h3>Verifiable infrastructure</h3>
-<p>Official documentation and contract references allow independent verification.</p>
-</div>
+      <h2 class="section-title">Why use ATAMO</h2>
 
-<div class="card">
-<h3>Security-focused design</h3>
-<p>Multi-signature authorization reduces single points of failure.</p>
-</div>
+      <p class="section-sub">
+        ATAMO is designed as a disciplined digital value system built around transparency, security, and deliberate governance.
+      </p>
 
-</div>
-</div>
-</section>
+      <div class="feature-grid">
 
-<section id="security">
-<div class="container">
+        <div class="card">
+          <h3>Transparent governance</h3>
+          <p>Administrative actions follow structured governance rather than hidden control.</p>
+        </div>
 
-<h2 class="section-title">Security Model</h2>
+        <div class="card">
+          <h3>Deliberation before execution</h3>
+          <p>Timelock delays allow public monitoring before protocol changes are executed.</p>
+        </div>
 
-<div class="split">
+        <div class="card">
+          <h3>Verifiable infrastructure</h3>
+          <p>Official documentation and contract references allow independent verification.</p>
+        </div>
 
-<div class="card">
+        <div class="card">
+          <h3>Security-focused design</h3>
+          <p>Multi-signature authorization reduces single points of failure.</p>
+        </div>
 
-<p class="section-sub">
-ATAMO is designed with security and operational transparency as fundamental principles. The system architecture separates authority, introduces deliberate delays for critical actions, and emphasizes verifiable public information.
-</p>
-</div>
+      </div>
 
-<div class="card">
+    </div>
+  </section>
 
-<h3>Multi-signature control</h3>
-<p>Administrative permissions are protected by multi-signature authorization.</p>
+  <section id="security">
+    <div class="container">
 
-<h3>Timelocked execution</h3>
-<p>Governance actions must pass through a review period before execution.</p>
+      <h2 class="section-title">Security Model</h2>
 
-<h3>Public verification</h3>
-<p>Official documentation and references support independent verification.</p>
+      <div class="split">
 
+        <div class="card">
+          <p class="section-sub">
+            ATAMO is designed with security and operational transparency as fundamental principles. The system architecture separates authority, introduces deliberate delays for critical actions, and emphasizes verifiable public information.
+          </p>
+        </div>
 
-</div>
+        <div class="card">
+          <h3>Multi-signature control</h3>
+          <p>Administrative permissions are protected by multi-signature authorization.</p>
 
-</div>
-</section>
+          <h3>Timelocked execution</h3>
+          <p>Governance actions must pass through a review period before execution.</p>
 
+          <h3>Public verification</h3>
+          <p>Official documentation and references support independent verification.</p>
+        </div>
 
-<section id="architecture">
-<div class="container">
+      </div>
 
-<h2 class="section-title">Protocol Architecture</h2>
+    </div>
+  </section>
 
-<p class="section-sub">
-ATAMO follows a layered governance model separating governance authority, execution control and token logic.
-</p>
+  <section id="architecture">
+    <div class="container">
 
-<div class="architecture">
+      <h2 class="section-title">Protocol Architecture</h2>
 
-<div class="arch-box">
-<h3>Custodian</h3>
-<p>Multi-signature control</p>
-<div class="arrow">→</div>
-</div>
+      <p class="section-sub">
+        ATAMO follows a layered governance model separating governance authority, execution control, and token logic.
+      </p>
 
-<div class="arch-box">
-<h3>Timelock</h3>
-<p>Deliberation delay</p>
-<div class="arrow">→</div>
-</div>
+      <div class="architecture">
 
-<div class="arch-box">
-<h3>Governance</h3>
-<p>Authorized protocol actions</p>
-<div class="arrow">→</div>
-</div>
+        <div class="arch-box">
+          <h3>Custodian</h3>
+          <p>Multi-signature control</p>
+          <div class="arrow">→</div>
+        </div>
 
-<div class="arch-box">
-<h3>Token</h3>
-<p>ATAMO digital asset</p>
-</div>
+        <div class="arch-box">
+          <h3>Timelock</h3>
+          <p>Deliberation delay</p>
+          <div class="arrow">→</div>
+        </div>
 
-</div>
+        <div class="arch-box">
+          <h3>Governance</h3>
+          <p>Authorized protocol actions</p>
+          <div class="arrow">→</div>
+        </div>
 
-</div>
-</section>
+        <div class="arch-box">
+          <h3>Token</h3>
+          <p>ATAMO digital asset</p>
+        </div>
 
+      </div>
 
-<section id="resources">
-<div class="container">
+    </div>
+  </section>
 
-<h2 class="section-title">Resources</h2>
+  <section id="resources">
+    <div class="container">
 
-<div class="resources">
+      <h2 class="section-title">Resources</h2>
 
-<div class="card">
-<h3>Documentation</h3>
-<p>Technical documentation of the ATAMO system.</p>
-<a class="resource-link" href="documentation.html">Documentation</a>
-</div>
+      <div class="resources">
 
-<div class="card">
-<h3>Source Code</h3>
-<p>Official repository and release references.</p>
-<a class="resource-link">Add repo link</a>
-</div>
+        <div class="card">
+          <h3>Documentation</h3>
+          <p>Technical documentation of the ATAMO system.</p>
+          <a class="resource-link" href="documentation.html">Documentation</a>
+        </div>
 
-<div class="card">
-<h3>Contracts</h3>
-<p>Mainnet deployment addresses.</p>
-<a class="resource-link" href="contracts.html">View contracts</a>
-</div>
+        <div class="card">
+          <h3>Source Code</h3>
+          <p>Official repository and release references.</p>
+          <a class="resource-link" href="https://github.com/atamo-atms/atamo-project" target="_blank" rel="noopener noreferrer">Project repository</a>
+        </div>
 
-<div class="card">
-<h3>Security</h3>
-<p>Responsible disclosure and monitoring guidance.</p>
-<a class="resource-link" href="security.html">Security policy</a>
-</div>
+        <div class="card">
+          <h3>Contracts</h3>
+          <p>Mainnet deployment addresses.</p>
+          <a class="resource-link" href="contracts.html">View contracts</a>
+        </div>
 
-</div>
-</div>
-</section>
+        <div class="card">
+          <h3>Security</h3>
+          <p>Responsible disclosure and monitoring guidance.</p>
+          <a class="resource-link" href="security.html">Security policy</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 
 </main>
 
+<section class="official-links">
+  <div class="container">
+    <h2>Official Links</h2>
+    <ul>
+      <li><a href="https://atamo-atms.org">Website</a></li>
+      <li><a href="https://github.com/atamo-atms">GitHub</a></li>
+      <li><a href="/.well-known/security.txt">security.txt</a></li>
+      <li><a href="/.well-known/pgp-key.txt">PGP Key</a></li>
+    </ul>
+  </div>
+</section>
+
 <footer>
-<div class="container footer-grid">
+  <div class="container footer-grid">
 
-<div>
-<div class="brand">
-<img src="logo.png">
-<span>ATAMO</span>
-</div>
+    <div>
+      <div class="brand">
+        <img src="logo.png" alt="ATAMO logo">
+        <span>ATAMO</span>
+      </div>
 
-<p>This is the official website of the ATAMO Token.</p>
+      <p>Governance-driven digital asset protocol.</p>
 
-</div>
+      <p>
+        Official website:
+        <a href="https://atamo-atms.org">atamo-atms.org</a>
+      </p>
 
-<div>
-<h3>Site</h3>
-<div class="footer-links">
-<a href="#features">Features</a>
-<a href="#security">Security</a>
-<a href="#architecture">Architecture</a>
-</div>
-</div>
+      <p>
+        GitHub:
+        <a href="https://github.com/atamo-atms">github.com/atamo-atms</a>
+      </p>
+    </div>
 
-<div>
-<h3>More</h3>
-<div class="footer-links">
-<a href="#resources">Resources</a>
-<a href="#">Top</a>
-</div>
-</div>
+    <div>
+      <h3>Site</h3>
+      <div class="footer-links">
+        <a href="#security">Security</a>
+        <a href="documentation.html">Documentation</a>
+        <a href="get-atamo.html">Get ATAMO</a>
+        <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
+      </div>
+    </div>
 
-</div>
+    <div>
+      <h3>Resources</h3>
+      <div class="footer-links">
+        <a href="contracts.html">Contracts</a>
+        <a href="verify.html">Verify</a>
+		<a href="release-verification.html">Release Verification</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 ATAMO. All rights reserved.</p>
+  </div>
 </footer>
 
 </body>
