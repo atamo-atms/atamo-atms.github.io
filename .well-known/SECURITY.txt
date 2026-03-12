@@ -1,0 +1,5 @@
+Contact: mailto:security@atamo-atms.org
+Expires: 2030-01-01T00:00:00Z
+Preferred-Languages: en
+Canonical: https://atamo-atms.org/.well-known/security.txt
+Policy: https://atamo-atms.org/security.html
