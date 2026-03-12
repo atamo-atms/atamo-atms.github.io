@@ -1,0 +1,33 @@
+{
+  "project": "ATAMO",
+  "symbol": "ATMS",
+  "network": "Ethereum Mainnet",
+  "chainId": 1,
+  "updatedAt": "2026-03-12",
+  "contracts": {
+    "custodianSafe": {
+      "address": "0xe3b72bdb899364ce86949746D31CCba5f384b949",
+      "role": "2-of-3 multisig governance owner"
+    },
+    "timelockProxy": {
+      "address": "0x3a4Df2897ae83C71Cc9720404891Ff55B6Df786e",
+      "role": "deliberation period timelock proxy"
+    },
+    "timelockImplementation": {
+      "address": "0xaa6aC50f21fFA895C0F1e5446E41f34Bb3c7FE5c",
+      "role": "timelock implementation"
+    },
+    "tokenProxy": {
+      "address": "0x2e37FaCBA45c3Dc73073899c817d0C55Ee6c7b82",
+      "role": "official ATAMO token proxy"
+    },
+    "tokenImplementation": {
+      "address": "0x8d7896bf6326cf1A17496136D13a3C8C916d07f9",
+      "role": "token implementation"
+    },
+    "governanceHelper": {
+      "address": "0x90a8215E7c9a7993927C7e9f1De48808548ac491",
+      "role": "proposal recorder / governance helper"
+    }
+  }
+}
