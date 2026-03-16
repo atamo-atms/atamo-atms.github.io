@@ -1,5 +1,17 @@
-Contact: mailto:security@atamo-atms.org
-Expires: 2030-01-01T00:00:00Z
+ATAMO Security Contact
+
+Contact Email: security@atamo-atms.org
+Contact: https://github.com/atamo-atms/atamo-project/security/advisories/new
+Website: www.atamo-atms.org
+
 Preferred-Languages: en
-Canonical: https://atamo-atms.org/.well-known/security.txt
-Policy: https://atamo-atms.org/security.html
+
+Canonical: https://github.com/atamo-atms/atamo-project
+
+Encryption: https://raw.githubusercontent.com/atamo-atms/atamo-project/main/atamo-release-key-public.asc
+PGP-Fingerprint: 05E539A205D133DE44460BD6331109D8AFF8B090
+
+Policy: https://github.com/atamo-atms/atamo-project/blob/main/SECURITY.md
+
+Please do not disclose vulnerabilities publicly.
+Send a clear report with reproduction steps and impact analysis.
