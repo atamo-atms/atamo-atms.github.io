@@ -37,13 +37,12 @@
 <h1>Release Verification</h1>
 
 <p>
-Official ATAMO releases are cryptographically signed using PGP.  
+Official ATAMO releases are cryptographically signed using PGP.
 This allows anyone to independently verify that a release was created by the project maintainers.
 </p>
 
 </div>
 </section>
-
 
 <section>
 <div class="container">
@@ -69,7 +68,7 @@ All official ATAMO releases are signed using the project's public PGP key.
 </p>
 
 <p>
-<span class="code">05E5 39A2 05D1 33DE 4446  0BD6 3311 09D8 AFF8 B090</span>
+<span class="code">05E5 39A2 05D1 33DE 4446 0BD6 3311 09D8 AFF8 B090</span>
 </p>
 
 <p>
@@ -87,7 +86,6 @@ github.com/atamo-atms/atamo-project
 </div>
 </section>
 
-
 <section>
 <div class="container">
 
@@ -97,21 +95,22 @@ github.com/atamo-atms/atamo-project
 
 <div class="step">
 <strong>1. Import the ATAMO public key</strong>
-<p>Download the public PGP key</p>
+<p>Download the public PGP key.</p>
 <p class="code">curl -O https://atamo-atms.org/.well-known/pgp-key.txt</p>
 
-<p>Import the key into GPG</p>
+<p>Import the key into GPG.</p>
 <p class="code">gpg --import pgp-key.txt</p>
-
 </div>
 
 <div class="step">
-<strong>2. Download the release and signature</strong>
-<p>Download the manifest and its signature</p>
+<strong>2. Download the signed manifest and release files</strong>
+<p>Download the manifest and its signature.</p>
 <p class="code">curl -LO https://github.com/atamo-atms/atamo-project/releases/download/v1.0.0/manifest-2026-03-14.txt</p>
 <p class="code">curl -LO https://github.com/atamo-atms/atamo-project/releases/download/v1.0.0/manifest-2026-03-14.txt.asc</p>
 
-<p>Download the source archive (optional, for code verification)
+<p>The manifest contains SHA256 checksums for the release files.</p>
+
+<p>Download the source archive (optional, for code verification).</p>
 <p class="code">curl -LO https://github.com/atamo-atms/atamo-project/releases/download/v1.0.0/atamo-v1.0.0-source.tar.gz</p>
 </div>
 
@@ -120,20 +119,20 @@ github.com/atamo-atms/atamo-project
 <p class="code">gpg --verify manifest-2026-03-14.txt.asc manifest-2026-03-14.txt</p>
 
 <p>You should see something like:</p>
-<p>gpg: Good signature from "ATAMO Security <security@atamo-atms.org>"</p>
+<p class="code">gpg: Good signature from "ATAMO Security &lt;security@atamo-atms.org&gt;"</p>
 </div>
 
 <div class="step">
 <strong>4. Check file integrity using SHA256 checksums</strong>
 <p class="code">sha256sum -c manifest-2026-03-14.txt</p>
 
-<p>This will verify all files listed in the manifest match the published checksums.</p>
+<p>This verifies that all files listed in the manifest match the published checksums.</p>
 </div>
+
 </div>
 
 </div>
 </section>
-
 
 <section>
 <div class="container">
@@ -146,7 +145,6 @@ Always verify releases against the official repository and PGP signature before 
 </section>
 
 </main>
-
 
 <section class="official-links">
 <div class="container">
@@ -163,52 +161,51 @@ Always verify releases against the official repository and PGP signature before 
 </div>
 </section>
 
-
 <footer>
 <div class="container footer-grid">
 
-    <div>
-      <div class="brand">
-        <img src="logo.webp" alt="ATAMO logo">
-        <span>ATAMO</span>
-      </div>
-
-      <p>Governance-driven digital asset protocol.</p>
-
-      <p>
-        Official website:
-        <a href="https://atamo-atms.org">atamo-atms.org</a>
-      </p>
-
-      <p>
-        GitHub:
-        <a href="https://github.com/atamo-atms">github.com/atamo-atms</a>
-      </p>
+  <div>
+    <div class="brand">
+      <img src="logo.webp" alt="ATAMO logo">
+      <span>ATAMO</span>
     </div>
 
-<div>
-<h3>Site</h3>
-<div class="footer-links">
-<a href="security.html">Security</a>
-<a href="documentation.html">Documentation</a>
-<a href="get-atamo.html">Get ATAMO</a>
-</div>
-</div>
+    <p>Governance-driven digital asset protocol.</p>
 
-<div>
-<h3>Resources</h3>
-<div class="footer-links">
-<a href="contracts.html">Contracts</a>
-<a href="verify.html">Verify</a>
-<a href="release-verification.html">Release Verification</a>
-<a href="#top">Back to top</a>
-</div>
-</div>
+    <p>
+      Official website:
+      <a href="https://atamo-atms.org">atamo-atms.org</a>
+    </p>
+
+    <p>
+      GitHub:
+      <a href="https://github.com/atamo-atms">github.com/atamo-atms</a>
+    </p>
+  </div>
+
+  <div>
+    <h3>Site</h3>
+    <div class="footer-links">
+      <a href="security.html">Security</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="get-atamo.html">Get ATAMO</a>
+    </div>
+  </div>
+
+  <div>
+    <h3>Resources</h3>
+    <div class="footer-links">
+      <a href="contracts.html">Contracts</a>
+      <a href="verify.html">Verify</a>
+      <a href="release-verification.html">Release Verification</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
 
 </div>
 
 <div class="footer-bottom">
-<p>© 2026 ATAMO. All rights reserved.</p>
+  <p>© 2026 ATAMO. All rights reserved.</p>
 </div>
 
 </footer>
