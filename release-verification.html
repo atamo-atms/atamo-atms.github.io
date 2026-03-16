@@ -97,21 +97,21 @@ github.com/atamo-atms/atamo-project
 
 <div class="step">
 <strong>1. Import the ATAMO public key</strong>
-<p># Download the public PGP key</p>
+<p>Download the public PGP key</p>
 <p class="code">curl -O https://atamo-atms.org/.well-known/pgp-key.txt</p>
 
-<p># Import the key into GPG</p>
+<p>Import the key into GPG</p>
 <p class="code">gpg --import pgp-key.txt</p>
 
 </div>
 
 <div class="step">
 <strong>2. Download the release and signature</strong>
-<p># Download the manifest and its signature</p>
+<p>Download the manifest and its signature</p>
 <p class="code">curl -LO https://github.com/atamo-atms/atamo-project/releases/download/v1.0.0/manifest-2026-03-14.txt</p>
 <p class="code">curl -LO https://github.com/atamo-atms/atamo-project/releases/download/v1.0.0/manifest-2026-03-14.txt.asc</p>
 
-<p># Download the source archive (optional, for code verification)
+<p>Download the source archive (optional, for code verification)
 <p class="code">curl -LO https://github.com/atamo-atms/atamo-project/releases/download/v1.0.0/atamo-v1.0.0-source.tar.gz</p>
 </div>
 
@@ -119,11 +119,16 @@ github.com/atamo-atms/atamo-project
 <strong>3. Verify the PGP signature of the manifest</strong>
 <p class="code">gpg --verify manifest-2026-03-14.txt.asc manifest-2026-03-14.txt</p>
 
-# You should see something like:
+<p>You should see something like:</p>
 <p>gpg: Good signature from "ATAMO Security <security@atamo-atms.org>"</p>
-
 </div>
 
+<div class="step">
+<strong>4. Check file integrity using SHA256 checksums</strong>
+<p class="code">sha256sum -c manifest-2026-03-14.txt</p>
+
+<p>This will verify all files listed in the manifest match the published checksums.</p>
+</div>
 </div>
 
 </div>
