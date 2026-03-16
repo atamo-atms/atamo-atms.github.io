@@ -97,14 +97,11 @@ github.com/atamo-atms/atamo-project
 
 <div class="step">
 <strong>1. Import the ATAMO public key</strong>
+<p># Download the public PGP key</p>
+<p class="code">curl -O https://atamo-atms.org/.well-known/pgp-key.txt</p>
 
-<p class="code">
-# Download the public PGP key
-curl -O https://atamo-atms.org/.well-known/pgp-key.txt
-
-# Import the key into GPG
-gpg --import pgp-key.txt
-</p>
+<p># Import the key into GPG</p>
+<p class="code">gpg --import pgp-key.txt</p>
 
 </div>
 
