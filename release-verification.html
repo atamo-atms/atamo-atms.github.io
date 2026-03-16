@@ -116,11 +116,11 @@ github.com/atamo-atms/atamo-project
 </div>
 
 <div class="step">
-<strong>3. Verify the signature</strong>
+<strong>3. Verify the PGP signature of the manifest</strong>
+<p class="code">gpg --verify manifest-2026-03-14.txt.asc manifest-2026-03-14.txt</p>
 
-<p class="code">
-gpg --verify release.tar.gz.asc release.tar.gz
-</p>
+# You should see something like:
+<p>gpg: Good signature from "ATAMO Security <security@atamo-atms.org>"</p>
 
 </div>
 
