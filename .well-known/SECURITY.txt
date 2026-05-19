@@ -2,14 +2,14 @@ ATAMO Security Contact
 
 Contact Email: security@atamo-atms.org
 Contact: https://github.com/atamo-atms/atamo-project/security/advisories/new
-Website: www.atamo-atms.org
+Website: https://www.atamo-atms.org
 
 Preferred-Languages: en
 
 Canonical: https://github.com/atamo-atms/atamo-project
 
 Encryption: https://raw.githubusercontent.com/atamo-atms/atamo-project/main/atamo-release-key-public.asc
-PGP-Fingerprint: 05E539A205D133DE44460BD6331109D8AFF8B090
+PGP-Fingerprint: 7FF6 8D4A 2A54 F8CC 8641  E880 A4C7 575F 79C4 E1AC
 
 Policy: https://github.com/atamo-atms/atamo-project/blob/main/SECURITY.md
 
