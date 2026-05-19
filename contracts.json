@@ -1,33 +1,268 @@
 {
-  "project": "ATAMO",
-  "symbol": "ATMS",
-  "network": "Ethereum Mainnet",
-  "chainId": 1,
-  "updatedAt": "2026-03-12",
-  "contracts": {
-    "custodianSafe": {
+  "$schema": "https://atamo-atms.org/schemas/contracts.registry.v1.json",
+  "schemaVersion": "1.0.0",
+  "registryType": "authoritative-mainnet-deployment-registry",
+  "project": {
+    "name": "ATAMO",
+    "symbol": "ATMS",
+    "tokenName": "ATAMO",
+    "repository": "https://github.com/atamo-atms/atamo-project",
+    "website": "https://www.atamo-atms.org",
+    "securityContact": "security@atamo-atms.org"
+  },
+  "network": {
+    "name": "Ethereum Mainnet",
+    "chainId": 1,
+    "nativeCurrency": "ETH",
+    "blockExplorer": "https://etherscan.io"
+  },
+  "release": {
+    "version": "v1.0.0",
+    "generatedAt": "2026-05-15T00:00:00Z",
+    "status": "mainnet-deployed",
+    "releaseSigningKey": {
+      "name": "ATAMO Security",
+      "email": "security@atamo-atms.org",
+      "fingerprint": "7FF6 8D4A 2A54 F8CC 8641 E880 A4C7 575F 79C4 E1AC",
+      "compactFingerprint": "7FF68D4A2A54F8CC8641E880A4C7575F79C4E1AC",
+      "longKeyId": "A4C7575F79C4E1AC",
+      "publicKeyFile": "atamo-release-key-public.asc"
+    }
+  },
+  "governance": {
+    "controlModel": "Safe multisig authorization with Timelock-delayed execution",
+    "safe": {
+      "name": "ATAMO Custodian Safe",
+      "type": "Safe Multisig",
+      "role": "Root governance authority",
+      "threshold": "2-of-3",
       "address": "0xe3b72bdb899364ce86949746D31CCba5f384b949",
-      "role": "2-of-3 multisig governance owner"
+      "safeApp": "https://app.safe.global/home?safe=eth:0xe3b72bdb899364ce86949746D31CCba5f384b949",
+      "explorer": "https://etherscan.io/address/0xe3b72bdb899364ce86949746D31CCba5f384b949"
     },
+    "executionPath": [
+      "ATAMO Custodian Safe",
+      "Timelock Proxy",
+      "SecureToken Proxy"
+    ],
+    "participationPath": [
+      "Users",
+      "ATMSParticipationVault"
+    ],
+    "recordingPath": [
+      "ATAMO Custodian Safe",
+      "TokenActionRecorder"
+    ]
+  },
+  "contracts": {
     "timelockProxy": {
-      "address": "0x3a4Df2897ae83C71Cc9720404891Ff55B6Df786e",
-      "role": "deliberation period timelock proxy"
+      "name": "Timelock Proxy",
+      "sourceContract": "Timelock.sol",
+      "type": "ERC1967 UUPS Proxy",
+      "role": "Delayed governance execution layer",
+      "address": "0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8",
+      "implementation": "0xb0d8dc6a08Cb4F93a795c53867ac990C8ce4B0E0",
+      "owner": "0xe3b72bdb899364ce86949746D31CCba5f384b949",
+      "minimumDelaySeconds": 172800,
+      "minimumDelayHuman": "48 hours",
+      "gracePeriodSeconds": 5184000,
+      "gracePeriodHuman": "60 days",
+      "guardian": "0x0000000000000000000000000000000000000000",
+      "upgradeAuthorization": "Timelock self-call only",
+      "explorer": "https://etherscan.io/address/0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8",
+      "implementationExplorer": "https://etherscan.io/address/0xb0d8dc6a08Cb4F93a795c53867ac990C8ce4B0E0",
+      "verification": {
+        "readAsProxy": true,
+        "expectedOwner": "0xe3b72bdb899364ce86949746D31CCba5f384b949",
+        "expectedMinDelay": "172800",
+        "expectedGracePeriod": "5184000",
+        "expectedGuardian": "0x0000000000000000000000000000000000000000"
+      }
     },
     "timelockImplementation": {
-      "address": "0xaa6aC50f21fFA895C0F1e5446E41f34Bb3c7FE5c",
-      "role": "timelock implementation"
+      "name": "Timelock Implementation",
+      "sourceContract": "Timelock.sol",
+      "type": "Implementation Contract",
+      "role": "Logic contract for Timelock Proxy",
+      "address": "0xb0d8dc6a08Cb4F93a795c53867ac990C8ce4B0E0",
+      "proxy": "0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8",
+      "explorer": "https://etherscan.io/address/0xb0d8dc6a08Cb4F93a795c53867ac990C8ce4B0E0"
     },
-    "tokenProxy": {
-      "address": "0x2e37FaCBA45c3Dc73073899c817d0C55Ee6c7b82",
-      "role": "official ATAMO token proxy"
+    "secureTokenProxy": {
+      "name": "SecureToken Proxy",
+      "publicName": "ATAMO Token",
+      "symbol": "ATMS",
+      "sourceContract": "SecureToken.sol",
+      "type": "ERC20 UUPS Proxy",
+      "role": "Canonical user-facing ERC-20 token contract",
+      "address": "0x38604c42c16e29BbFbc5479668453f18cB6cf335",
+      "implementation": "0xD0E06380aF1927c5d929625406d7E9896a80C09c",
+      "owner": "0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8",
+      "timelock": "0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8",
+      "decimals": 18,
+      "maxSupplyHuman": "200,000,000 ATMS",
+      "maxSupplyBaseUnits": "200000000000000000000000000",
+      "mintAuthority": "Timelock only",
+      "pauseAuthority": "Timelock only",
+      "upgradeAuthorization": "Timelock-controlled request/approve/upgrade flow",
+      "isUserFacingToken": true,
+      "explorer": "https://etherscan.io/address/0x38604c42c16e29BbFbc5479668453f18cB6cf335",
+      "implementationExplorer": "https://etherscan.io/address/0xD0E06380aF1927c5d929625406d7E9896a80C09c",
+      "verification": {
+        "readAsProxy": true,
+        "expectedName": "ATAMO",
+        "expectedSymbol": "ATMS",
+        "expectedDecimals": "18",
+        "expectedOwner": "0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8",
+        "expectedTimelock": "0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8"
+      }
     },
-    "tokenImplementation": {
-      "address": "0x8d7896bf6326cf1A17496136D13a3C8C916d07f9",
-      "role": "token implementation"
+    "secureTokenImplementation": {
+      "name": "SecureToken Implementation",
+      "sourceContract": "SecureToken.sol",
+      "type": "Implementation Contract",
+      "role": "Logic contract for SecureToken Proxy",
+      "address": "0xD0E06380aF1927c5d929625406d7E9896a80C09c",
+      "proxy": "0x38604c42c16e29BbFbc5479668453f18cB6cf335",
+      "isUserFacingToken": false,
+      "explorer": "https://etherscan.io/address/0xD0E06380aF1927c5d929625406d7E9896a80C09c"
     },
-    "governanceHelper": {
-      "address": "0x90a8215E7c9a7993927C7e9f1De48808548ac491",
-      "role": "proposal recorder / governance helper"
+    "participationVault": {
+      "name": "ATMSParticipationVault",
+      "sourceContract": "ATMSParticipationVault.sol",
+      "type": "Participation / Staking / Governance Registry",
+      "role": "Staking, proposal registry, support tracking, signal submission, rewards, and execution-link tracking",
+      "address": "0x01273Ef57CE09C4Aa615E3bd95eF2b9DD54fd0E4",
+      "token": "0x38604c42c16e29BbFbc5479668453f18cB6cf335",
+      "controller": {
+        "address": "0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8",
+        "verificationRequired": true
+      },
+      "minimumStake": {
+        "verificationRequired": true,
+        "method": "minimumStake()"
+      },
+      "cooldownPeriod": {
+        "verificationRequired": true,
+        "method": "cooldownPeriod()"
+      },
+      "constants": {
+        "rewardEligibilityAgeSeconds": 2592000,
+        "rewardEligibilityAgeHuman": "30 days",
+        "maxActiveLots": 5,
+        "minSupportWindowSeconds": 86400,
+        "minSupportWindowHuman": "1 day",
+        "maxSupportWindowSeconds": 15552000,
+        "maxSupportWindowHuman": "180 days",
+        "defaultProposalCooldownSeconds": 86400,
+        "defaultProposalCooldownHuman": "1 day",
+        "penaltyUnder10DaysBps": 800,
+        "penaltyUnder20DaysBps": 500,
+        "penaltyUnder30DaysBps": 200,
+        "multiplier30To365DaysBps": 10000,
+        "multiplier365PlusDaysBps": 12000
+      },
+      "doesNotExecuteTokenGovernance": true,
+      "cannotRecoverToken": "ATMS token recovery is blocked by contract logic",
+      "explorer": "https://etherscan.io/address/0x01273Ef57CE09C4Aa615E3bd95eF2b9DD54fd0E4"
+    },
+    "tokenActionRecorder": {
+      "name": "TokenActionRecorder",
+      "sourceContract": "TokenActionRecorder.sol",
+      "type": "Governance Metadata Registry",
+      "role": "Safe-only governance action metadata and Timelock execution parameter recorder",
+      "address": "0xAA7152784479Ed53147A12514602968327c9965E",
+      "safe": "0xe3b72bdb899364ce86949746D31CCba5f384b949",
+      "supportedActions": [
+        "mint",
+        "pause",
+        "unpause",
+        "requestUpgrade",
+        "approveUpgrade"
+      ],
+      "doesNotExecuteTimelockOperations": true,
+      "explorer": "https://etherscan.io/address/0xAA7152784479Ed53147A12514602968327c9965E"
     }
+  },
+  "build": {
+    "solidityVersion": "0.8.22",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "upgradeValidationCommands": [
+      "npm run validate:token",
+      "npm run validate:timelock"
+    ]
+  },
+  "invariants": [
+    {
+      "id": "SAFE_OWNS_TIMELOCK",
+      "statement": "Timelock Proxy owner must be the ATAMO Custodian Safe.",
+      "expected": {
+        "contract": "timelockProxy",
+        "method": "owner()",
+        "value": "0xe3b72bdb899364ce86949746D31CCba5f384b949"
+      }
+    },
+    {
+      "id": "TIMELOCK_OWNS_TOKEN",
+      "statement": "SecureToken Proxy owner must be the Timelock Proxy.",
+      "expected": {
+        "contract": "secureTokenProxy",
+        "method": "owner()",
+        "value": "0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8"
+      }
+    },
+    {
+      "id": "TOKEN_TIMELOCK_POINTER",
+      "statement": "SecureToken timelock pointer must be the Timelock Proxy.",
+      "expected": {
+        "contract": "secureTokenProxy",
+        "method": "timelock()",
+        "value": "0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8"
+      }
+    },
+    {
+      "id": "SUPPLY_CAP",
+      "statement": "Token supply cannot exceed 200,000,000 ATMS.",
+      "expected": {
+        "contract": "secureTokenProxy",
+        "method": "MAX_SUPPLY() / totalSupply()",
+        "condition": "totalSupply() <= 200000000000000000000000000"
+      }
+    },
+    {
+      "id": "VAULT_NO_TOKEN_ADMIN_EXECUTION",
+      "statement": "Participation Vault cannot mint, pause, unpause, upgrade, or execute Timelock operations."
+    },
+    {
+      "id": "RECORDER_NO_EXECUTION",
+      "statement": "TokenActionRecorder records governance metadata but does not execute Timelock operations."
+    },
+    {
+      "id": "TIMELOCK_UPGRADE_SELF_CALL",
+      "statement": "Timelock upgrades require successful Timelock self-execution."
+    }
+  ],
+  "verificationInstructions": {
+    "verifyContractRegistry": [
+      "gpg --verify contracts.json.sha256.asc contracts.json.sha256",
+      "sha256sum -c contracts.json.sha256"
+    ],
+    "verifyTokenProxy": [
+      "Open token proxy on Etherscan",
+      "Use Contract -> Read as Proxy",
+      "Confirm name, symbol, decimals, owner, and timelock values"
+    ],
+    "verifyTimelockProxy": [
+      "Open Timelock proxy on Etherscan",
+      "Use Contract -> Read as Proxy",
+      "Confirm owner, minDelay, gracePeriod, and guardian"
+    ],
+    "verifyParticipationVaultController": [
+      "Read controller() from ATMSParticipationVault",
+      "Replace the controller placeholder in this registry before final publication"
+    ]
   }
 }
