@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ATAMO | Documentation</title>
   <meta name="description" content="High-level public documentation describing the structure, priorities, and verification model of ATAMO.">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
 </head>
 <body id="top">
@@ -16,122 +18,368 @@
       <span>ATAMO</span>
     </a>
 
-    <nav class="nav-links">
-      <a href="security.html">Security</a>
-      <a href="documentation.html">Documentation</a>
-      <a href="contracts.html">Contracts</a>
-      <a href="verify.html">Verify</a>
-      <a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
-    </nav>
+	<nav class="nav-links">
+		<a href="contracts.html">Contracts</a>
+
+		<div class="nav-dropdown">
+			<span class="nav-dropdown-label">Documentation</span>
+
+			<div class="dropdown-menu">
+				<a href="documentation.html">Documentation</a>
+				<a href="protocol-model.html">Protocol Model</a>
+				<a href="tokenomics.html">Tokenomics</a>
+			</div>
+		</div>
+
+		<a href="admin-powers.html">Admin Powers</a>
+		
+		<div class="nav-dropdown">
+			<span class="nav-dropdown-label">Verification</span>
+
+			<div class="dropdown-menu">
+				<a href="verify.html">Verification Guide</a>
+				<a href="release-verification.html">Release Verification</a>
+			</div>
+		</div>
+
+		<a href="security.html">Security</a>
+		<a href="participate.html">How to Participate</a>
+		<a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
+	</nav>
   </div>
 </header>
 
 <main>
-
   <section class="page-hero">
     <div class="container page-hero-inner">
       <h1>Documentation</h1>
-      <p>High-level public documentation describing the structure, priorities, and verification model of ATAMO.</p>
+      <p>
+        This section provides the structured documentation of the ATAMO system,
+        including protocol architecture, administrative model, verification guidance,
+        participation infrastructure, release verification, and public references.
+      </p>
     </div>
   </section>
 
-  <section>
+  <section id="documentation-role">
     <div class="container">
+      <h2 class="section-title">Documentation role</h2>
 
-      <h2 class="section-title">Project overview</h2>
+      <div class="card_tokenomics">
+        <p>
+          ATAMO documentation explains how the system is structured and how it
+          should be verified.
+        </p>
+        <p>
+          Documentation is not the source of truth by itself. Verified smart
+          contracts, on-chain data, signed Git tags, signed checksum manifests,
+          and official release artifacts define the actual system state.
+        </p>
+        <p>
+          Documentation should be used together with those sources to understand
+          and validate the protocol.
+        </p>
+      </div>
+    </div>
+  </section>
 
+  <section id="project-overview">
+    <div class="container">
+      <h2 class="section-title">1. Project overview</h2>
       <p class="section-sub">
-        ATAMO is a digital value system designed around transparent governance, disciplined administrative control, and verifiable public infrastructure.
+        ATAMO is an Ethereum Mainnet ERC-20 infrastructure system built around
+        disclosed administrative control, Safe multisig authorization, Timelock
+        execution, participation infrastructure, and verifiable public references.
       </p>
 
       <div class="grid grid-2">
-
-        <article class="card">
+        <article class="card_tokenomics">
           <h3>Core structure</h3>
           <ul>
-            <li>Custodian multisignature authority</li>
-            <li>Timelock deliberation and delayed execution</li>
-            <li>Upgradeable token infrastructure</li>
-            <li>Public documentation and verification references</li>
+            <li>2-of-3 Safe multisignature governance root</li>
+            <li>Timelock-delayed execution of sensitive actions</li>
+            <li>UUPS upgradeable SecureToken proxy architecture</li>
+            <li>TokenActionRecorder for Safe-only governance action records</li>
+            <li>ATMSParticipationVault for staking, proposal support, and rewards</li>
+            <li>signed Git tag and signed release checksum manifest</li>
+            <li>public contract references and verification guidance</li>
           </ul>
         </article>
 
-        <article class="card">
+        <article class="card_tokenomics">
           <h3>Design priorities</h3>
           <ul>
-            <li>Security-first governance of the ATAMO token system</li>
-            <li>Deliberate execution of critical administrative actions</li>
-            <li>Publicly verifiable contract and deployment references</li>
-            <li>Stable long-term protocol control built on accountability and transparency</li>
+            <li>security-focused administrative model</li>
+            <li>deliberate execution of critical actions</li>
+            <li>public verifiability of contracts and references</li>
+            <li>transparent long-term protocol control</li>
+            <li>clear separation between participation and execution authority</li>
+            <li>cryptographically verifiable release artifacts</li>
           </ul>
         </article>
-
       </div>
-
     </div>
   </section>
 
-  <section>
+  <section id="system-layers">
     <div class="container">
-
-      <h2 class="section-title">System layers</h2>
-
+      <h2 class="section-title">2. System layers</h2>
       <p class="section-sub">
-        ATAMO separates authority, execution, and token logic into independent layers. This structure improves security, transparency, and operational discipline.
+        ATAMO separates authorization, delayed execution, token logic,
+        action recording, and participation coordination into distinct layers.
       </p>
 
       <div class="grid grid-4">
-
-        <article class="card">
-          <h3>Custodian</h3>
-          <p>Multi-signature control of sensitive administrative authority.</p>
+        <article class="card_tokenomics">
+          <h3>Custodian Safe</h3>
+          <p>
+            2-of-3 multisignature authorization layer for sensitive protocol actions.
+          </p>
         </article>
 
-        <article class="card">
+        <article class="card_tokenomics">
           <h3>Timelock</h3>
-          <p>Deliberation period before critical protocol actions are executed.</p>
+          <p>
+            Delayed execution layer providing a review window before privileged
+            actions are executed.
+          </p>
         </article>
 
-        <article class="card">
-          <h3>Governance</h3>
-          <p>Authorized proposals controlling upgrades and administrative actions.</p>
+        <article class="card_tokenomics">
+          <h3>SecureToken</h3>
+          <p>
+            The ATAMO ERC-20 token proxy and implementation enforcing transfer,
+            pause, mint, upgrade, and supply-cap logic.
+          </p>
         </article>
 
-        <article class="card">
-          <h3>Token</h3>
-          <p>The ATAMO digital asset represented by the deployed token contract.</p>
+        <article class="card_tokenomics">
+          <h3>TokenActionRecorder</h3>
+          <p>
+            Safe-only governance action recorder for mint, pause, unpause, and
+            upgrade operation metadata.
+          </p>
         </article>
 
+        <article class="card_tokenomics">
+          <h3>Participation Vault</h3>
+          <p>
+            Staking, proposal registry, proposal support, participation rights,
+            and penalty-funded reward infrastructure.
+          </p>
+        </article>
       </div>
-
     </div>
   </section>
 
+  <section id="official-addresses">
+    <div class="container">
+      <h2 class="section-title">3. Official Ethereum Mainnet addresses</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Address</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ATAMO Custodian Safe</td>
+              <td><span class="code">0xe3b72bdb899364ce86949746D31CCba5f384b949</span></td>
+              <td>2-of-3 multisignature governance root</td>
+            </tr>
+            <tr>
+              <td>Timelock Proxy</td>
+              <td><span class="code">0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8</span></td>
+              <td>Delayed governance execution layer</td>
+            </tr>
+            <tr>
+              <td>SecureToken Proxy</td>
+              <td><span class="code">0x38604c42c16e29BbFbc5479668453f18cB6cf335</span></td>
+              <td>Canonical user-facing ATMS ERC-20 token</td>
+            </tr>
+            <tr>
+              <td>ATMSParticipationVault</td>
+              <td><span class="code">0x01273Ef57CE09C4Aa615E3bd95eF2b9DD54fd0E4</span></td>
+              <td>Staking, proposal, support, and rewards layer</td>
+            </tr>
+            <tr>
+              <td>TokenActionRecorder</td>
+              <td><span class="code">0xAA7152784479Ed53147A12514602968327c9965E</span></td>
+              <td>Governance-action metadata recorder</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-to-use">
+    <div class="container">
+      <h2 class="section-title">4. How to use this documentation</h2>
+
+      <div class="grid grid-2">
+        <article class="card_tokenomics">
+          <h3>For users</h3>
+          <ul>
+            <li>verify the official token proxy before interacting</li>
+            <li>use the verification guide to confirm authenticity</li>
+            <li>check contract addresses against official deployment references</li>
+            <li>verify signed Git tags and signed checksum manifests when relying on release files</li>
+            <li>avoid relying on third-party sources without cross-checking</li>
+          </ul>
+        </article>
+
+        <article class="card_tokenomics">
+          <h3>For auditors and exchanges</h3>
+          <ul>
+            <li>validate contract addresses and roles using the contracts page</li>
+            <li>review the protocol model for execution and governance structure</li>
+            <li>confirm administrative controls using the admin powers page</li>
+            <li>verify releases and source code against signed release artifacts</li>
+            <li>review the Participation Vault separately from token execution authority</li>
+            <li>confirm the canonical token address is the SecureToken proxy</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="documentation-map">
+    <div class="container">
+      <h2 class="section-title">5. Documentation map</h2>
+
+      <div class="resources">
+        <div class="card_tokenomics">
+          <h3>Contracts</h3>
+          <p>Official deployment references and contract roles.</p>
+          <a class="resource-link" href="contracts.html">View contracts</a>
+        </div>
+
+        <div class="card_tokenomics">
+          <h3>Protocol Model</h3>
+          <p>Administrative architecture, Safe control, Timelock execution, and upgrade flow.</p>
+          <a class="resource-link" href="protocol-model.html">Protocol model</a>
+        </div>
+
+        <div class="card_tokenomics">
+          <h3>Admin Powers</h3>
+          <p>Disclosure of administrative authority and restrictions.</p>
+          <a class="resource-link" href="admin-powers.html">Admin powers</a>
+        </div>
+
+        <div class="card_tokenomics">
+          <h3>Verification</h3>
+          <p>How to validate contracts, releases, addresses, and references.</p>
+          <a class="resource-link" href="verify.html">Verification guide</a>
+        </div>
+
+        <div class="card_tokenomics">
+          <h3>Release Verification</h3>
+          <p>Signed Git tag, PGP key, SHA256SUMS, and release artifact verification.</p>
+          <a class="resource-link" href="release-verification.html">Release verification</a>
+        </div>
+
+        <div class="card_tokenomics">
+          <h3>Security</h3>
+          <p>Security principles, disclosure process, assumptions, and reviewer expectations.</p>
+          <a class="resource-link" href="security.html">Security policy</a>
+        </div>
+
+        <div class="card_tokenomics">
+          <h3>Tokenomics</h3>
+          <p>Supply model, distribution, issuance rules, and launch transparency.</p>
+          <a class="resource-link" href="tokenomics.html">Tokenomics</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="official-references">
+    <div class="container">
+      <h2 class="section-title">6. Official references</h2>
+
+      <div class="grid grid-2">
+        <article class="card_tokenomics">
+          <h3>Primary release verification files</h3>
+          <ul>
+            <li><span class="code">releases/v1.0.0/deployment-manifest.mainnet.json</span></li>
+            <li><span class="code">releases/v1.0.0/deployment-records-full.mainnet.json</span></li>
+            <li><span class="code">releases/v1.0.0/ATAMO_DEPLOYMENT_STATEMENT_mainnet_2026-05-16.txt</span></li>
+            <li><span class="code">releases/v1.0.0/SHA256SUMS</span></li>
+            <li><span class="code">releases/v1.0.0/SHA256SUMS.asc</span></li>
+            <li><span class="code">releases/v1.0.0/ATAMO_RELEASE_PGP_PUBLIC_KEY.asc</span></li>
+            <li><span class="code">docs/DEPLOYMENT.md</span></li>
+            <li><span class="code">docs/VERIFYING.md</span></li>
+          </ul>
+        </article>
+
+        <article class="card_tokenomics">
+          <h3>Security and operations files</h3>
+          <ul>
+            <li><span class="code">SECURITY.md</span></li>
+            <li><span class="code">docs/SECURITY_MODEL.md</span></li>
+            <li><span class="code">docs/THREAT_MODEL.md</span></li>
+            <li><span class="code">docs/PROTOCOL_INVARIANTS.md</span></li>
+            <li><span class="code">docs/MONITORING.md</span></li>
+            <li><span class="code">docs/RUNBOOK.md</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="final-principle">
+    <div class="container">
+      <div class="notice">
+        ATAMO should be evaluated using verified contracts, signed Git tags,
+        signed checksum manifests, public documentation, release artifacts, and
+        on-chain behavior together rather than relying on any single source.
+      </div>
+    </div>
+  </section>
 </main>
 
+
 <section class="official-links">
-  <div class="container">
-    <h2>Official Links</h2>
-    <ul>
-      <li><a href="https://atamo-atms.org">Website</a></li>
-      <li><a href="https://github.com/atamo-atms">GitHub</a></li>
-      <li><a href="/.well-known/security.txt">security.txt</a></li>
-      <li><a href="/.well-known/pgp-key.txt">PGP Key</a></li>
-	  <li><a href="https://github.com/atamo-atms/atamo-project/tree/main/docs">GitHub Documentation Link</a></li>
-    </ul>
+  <div class="container official-links-grid">
+
+    <div>
+      <h2>Official Links</h2>
+      <ul>
+        <li><a href="https://atamo-atms.org">Website</a></li>
+        <li><a href="https://github.com/atamo-atms">GitHub</a></li>
+        <li><a href="/.well-known/security.txt">security.txt</a></li>
+        <li><a href="/.well-known/pgp-key.txt">PGP Key</a></li>
+        <li><a href="https://github.com/atamo-atms/atamo-project/tree/main/docs">GitHub Documentation</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>Community</h2>
+
+			<a href="https://x.com/ATAMO_ATMS" target="_blank" rel="noopener noreferrer"><span class="icon">𝕏</span></a>
+
+			<a href="https://discord.gg/TYCAYaHaF" target="_blank" rel="noopener noreferrer"><span class="icon">💬</span></a>
+
+			<a href="https://reddit.com/u/ATAMO-project" target="_blank" rel="noopener noreferrer"><span class="icon">👽</span></a>
+    </div>
+
   </div>
 </section>
 
 <footer>
   <div class="container footer-grid">
-
-        <div>
+    <div>
       <div class="brand">
         <img src="logo.webp" alt="ATAMO logo">
         <span>ATAMO</span>
       </div>
 
-      <p>Governance-driven digital asset protocol.</p>
+      <p>Multisig- and timelock-controlled digital asset protocol.</p>
 
       <p>
         Official website:
@@ -147,22 +395,26 @@
     <div>
       <h3>Site</h3>
       <div class="footer-links">
-        <a href="security.html">Security</a>
+        <a href="index.html">Home</a>
+		<a href="contracts.html">Contracts</a>
         <a href="documentation.html">Documentation</a>
-        <a href="get-atamo.html">Get ATAMO</a>
+	    <a href="protocol-model.html">Protocol Model</a>
+	    <a href="tokenomics.html">Tokenomics</a>
+	    <a href="admin-powers.html">Admin Powers</a>
+		<a href="participate.html">How to Participate</a>
+        <a class="highlight" href="get-atamo.html">Get ATAMO</a>
       </div>
     </div>
 
     <div>
       <h3>Resources</h3>
       <div class="footer-links">
-        <a href="contracts.html">Contracts</a>
-        <a href="verify.html">Verify</a>
-		<a href="release-verification.html">Release Verification</a>
-        <a href="#top">Back to top</a>
+        <a href="security.html">Security</a>
+        <a href="verify.html">Verification Guide</a>
+        <a href="release-verification.html">Release Verification</a>
+        <a href="#top">Top ↑</a>
       </div>
     </div>
-
   </div>
 
   <div class="footer-bottom">

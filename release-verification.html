@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ATAMO | Release Verification</title>
 <meta name="description" content="Instructions for verifying official ATAMO releases using PGP signatures.">
-<link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body id="top">
@@ -18,196 +20,452 @@
       <span>ATAMO</span>
     </a>
 
-    <nav class="nav-links">
-      <a href="security.html">Security</a>
-      <a href="documentation.html">Documentation</a>
-      <a href="contracts.html">Contracts</a>
-      <a href="verify.html">Verify</a>
-      <a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
-    </nav>
+	<nav class="nav-links">
+		<a href="contracts.html">Contracts</a>
+
+		<div class="nav-dropdown">
+			<span class="nav-dropdown-label">Documentation</span>
+
+			<div class="dropdown-menu">
+				<a href="documentation.html">Documentation</a>
+				<a href="protocol-model.html">Protocol Model</a>
+				<a href="tokenomics.html">Tokenomics</a>
+			</div>
+		</div>
+
+		<a href="admin-powers.html">Admin Powers</a>
+		
+		<div class="nav-dropdown">
+			<span class="nav-dropdown-label">Verification</span>
+
+			<div class="dropdown-menu">
+				<a href="verify.html">Verification Guide</a>
+				<a href="release-verification.html">Release Verification</a>
+			</div>
+		</div>
+
+		<a href="security.html">Security</a>
+		<a href="participate.html">How to Participate</a>
+		<a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
+	</nav>
 
   </div>
 </header>
 
 <main>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <h1>Release Verification</h1>
+      <p>
+        This page defines how ATAMO releases are cryptographically verified.
+        Release authenticity is established through signed Git tags, PGP
+        signatures, signed SHA256 checksum manifests, official deployment
+        records, and verified Ethereum Mainnet contracts.
+      </p>
+    </div>
+  </section>
 
-<section class="page-hero">
-<div class="container page-hero-inner">
+  <section id="trust-model">
+    <div class="container">
+      <h2 class="section-title">Verification trust model</h2>
 
-<h1>Release Verification</h1>
+      <div class="card_tokenomics">
+        <p>
+          ATAMO releases are authenticated using a public PGP key controlled by
+          the ATAMO release signing authority.
+        </p>
+        <p>
+          A valid Git tag signature confirms that the repository release state
+          was signed by the ATAMO release authority.
+        </p>
+        <p>
+          A valid checksum-manifest signature confirms that the listed release
+          artifact hashes were signed by the ATAMO release authority.
+        </p>
+        <p>
+          Valid SHA256 checksums confirm that release files have not been
+          modified after the signed checksum manifest was created.
+        </p>
+      </div>
 
-<p>
-Official ATAMO releases are cryptographically signed using PGP.
-This allows anyone to independently verify that a release was created by the project maintainers.
-</p>
+      <div class="card_tokenomics">
+        <h3>Verification rule</h3>
+        <p>A release should be considered valid only if:</p>
+        <ul>
+          <li>the signed Git tag verifies successfully</li>
+          <li>the PGP signature on <span class="code">SHA256SUMS</span> is valid</li>
+          <li>the signing key fingerprint matches the official fingerprint</li>
+          <li>release artifact checksums match <span class="code">SHA256SUMS</span></li>
+          <li>contract addresses match the official deployment records</li>
+          <li>proxy and implementation relationships match the deployment documentation</li>
+          <li>verified blockchain records match the published release artifacts</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-</div>
-</section>
+  <section id="public-key">
+    <div class="container">
+      <h2 class="section-title">1. Public signing key</h2>
+      <p class="section-sub">
+        Official ATAMO releases and release-integrity artifacts are signed using
+        the ATAMO release PGP key.
+      </p>
 
-<section>
-<div class="container">
+      <div class="card_tokenomics">
+        <p><strong>Public key file:</strong></p>
+        <p>
+          <span class="code">
+            <a href="releases/v1.0.0/ATAMO_RELEASE_PGP_PUBLIC_KEY.asc" target="_blank" rel="noopener noreferrer">ATAMO_RELEASE_PGP_PUBLIC_KEY.asc</a>
+          </span>
+        </p>
 
-<h2 class="section-title">Public signing key</h2>
+        <p><strong>PGP fingerprint:</strong></p>
+        <p>
+          <span class="code">7FF68D4A2A54F8CC8641E880A4C7575F79C4E1AC</span>
+        </p>
 
-<p class="section-sub">
-All official ATAMO releases are signed using the project's public PGP key.
-</p>
+        <p><strong>PGP fingerprint spaced format:</strong></p>
+        <p>
+          <span class="code">7FF6 8D4A 2A54 F8CC 8641 E880 A4C7 575F 79C4 E1AC</span>
+        </p>
 
-<div class="card">
+        <p><strong>Signing identity:</strong></p>
+        <p>
+          <span class="code">ATAMO Security &lt;security@atamo-atms.org&gt;</span>
+        </p>
 
-<p>
-<strong>Public key location:</strong>
-</p>
+        <p><strong>Official repository:</strong></p>
+        <p>
+          <a href="https://github.com/atamo-atms/atamo-project" target="_blank" rel="noopener noreferrer">github.com/atamo-atms/atamo-project</a>
+        </p>
+      </div>
+    </div>
+  </section>
 
-<p>
-<span class="code"><a href="https://atamo-atms.org/.well-known/pgp-key.txt" target="_blank" rel="noopener noreferrer">https://atamo-atms.org/.well-known/pgp-key.txt</a></span>
-</p>
+  <section id="verification-steps">
+    <div class="container">
+      <h2 class="section-title">2. Verification process</h2>
 
-<p>
-<strong>PGP fingerprint:</strong>
-</p>
+      <div class="steps">
+        <div class="step">
+          <strong>1. Import the ATAMO public key</strong>
+          <p class="code">curl -LO https://raw.githubusercontent.com/atamo-atms/atamo-project/main/releases/v1.0.0/ATAMO_RELEASE_PGP_PUBLIC_KEY.asc</p>
+          <p class="code">gpg --import ATAMO_RELEASE_PGP_PUBLIC_KEY.asc</p>
+          <p class="code">gpg --fingerprint security@atamo-atms.org</p>
+          <p>
+            Confirm the fingerprint matches the official fingerprint shown above.
+          </p>
+        </div>
 
-<p>
-<span class="code">05E5 39A2 05D1 33DE 4446 0BD6 3311 09D8 AFF8 B090</span>
-</p>
+        <div class="step">
+          <strong>2. Verify the signed Git tag</strong>
+          <p class="code">git clone https://github.com/atamo-atms/atamo-project.git</p>
+          <p class="code">cd atamo-project</p>
+          <p class="code">git fetch --tags</p>
+          <p class="code">git tag -v v1.0.0</p>
+          <p>
+            The signature must be valid and must match the official ATAMO PGP
+            fingerprint.
+          </p>
+        </div>
 
-<p>
-<strong>GitHub reference:</strong>
-</p>
+        <div class="step">
+          <strong>3. Download release verification files</strong>
+          <p class="code">curl -LO https://raw.githubusercontent.com/atamo-atms/atamo-project/main/releases/v1.0.0/SHA256SUMS</p>
+          <p class="code">curl -LO https://raw.githubusercontent.com/atamo-atms/atamo-project/main/releases/v1.0.0/SHA256SUMS.asc</p>
+          <p class="code">curl -LO https://raw.githubusercontent.com/atamo-atms/atamo-project/main/releases/v1.0.0/deployment-manifest.mainnet.json</p>
+          <p class="code">curl -LO https://raw.githubusercontent.com/atamo-atms/atamo-project/main/releases/v1.0.0/deployment-records-full.mainnet.json</p>
+          <p class="code">curl -LO https://raw.githubusercontent.com/atamo-atms/atamo-project/main/releases/v1.0.0/ATAMO_DEPLOYMENT_STATEMENT_mainnet_2026-05-16.txt</p>
+        </div>
 
-<p>
-<a href="https://github.com/atamo-atms/atamo-project" target="_blank" rel="noopener noreferrer">
-github.com/atamo-atms/atamo-project
-</a>
-</p>
+        <div class="step">
+          <strong>4. Verify the signed checksum manifest</strong>
+          <p class="code">gpg --verify SHA256SUMS.asc SHA256SUMS</p>
+          <p>
+            The signature must be valid and must match the official ATAMO PGP
+            fingerprint.
+          </p>
+        </div>
 
-</div>
+        <div class="step">
+          <strong>5. Verify release artifact integrity</strong>
+          <p class="code">sha256sum -c SHA256SUMS</p>
+          <p>Expected result:</p>
+          <p class="code">deployment-manifest.mainnet.json: OK</p>
+          <p class="code">deployment-records-full.mainnet.json: OK</p>
+          <p class="code">ATAMO_DEPLOYMENT_STATEMENT_mainnet_2026-05-16.txt: OK</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
-</section>
+  <section id="official-release-artifacts">
+    <div class="container">
+      <h2 class="section-title">3. Official release artifacts</h2>
 
-<section>
-<div class="container">
+      <div class="card_tokenomics">
+        <p>
+          The official ATAMO v1.0.0 release artifacts are stored under:
+        </p>
+        <p><span class="code">releases/v1.0.0/</span></p>
 
-<h2 class="section-title">How to verify a release</h2>
+        <ul>
+          <li><span class="code">deployment-manifest.mainnet.json</span></li>
+          <li><span class="code">deployment-records-full.mainnet.json</span></li>
+          <li><span class="code">ATAMO_DEPLOYMENT_STATEMENT_mainnet_2026-05-16.txt</span></li>
+          <li><span class="code">SHA256SUMS</span></li>
+          <li><span class="code">SHA256SUMS.asc</span></li>
+          <li><span class="code">ATAMO_RELEASE_PGP_PUBLIC_KEY.asc</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<div class="steps">
+  <section id="failure-conditions">
+    <div class="container">
+      <h2 class="section-title">4. Failure conditions</h2>
 
-<div class="step">
-<strong>1. Import the ATAMO public key</strong>
-<p>Download the public PGP key.</p>
-<p class="code">curl -O https://atamo-atms.org/.well-known/pgp-key.txt</p>
+      <div class="card_tokenomics">
+        <p>
+          If any of the following conditions occur, the release must be treated
+          as untrusted:
+        </p>
+        <ul>
+          <li>Git tag signature verification fails</li>
+          <li>PGP signature verification fails</li>
+          <li>signing key fingerprint does not match the official fingerprint</li>
+          <li>checksums do not match <span class="code">SHA256SUMS</span></li>
+          <li>release artifacts differ from repository references</li>
+          <li>contract addresses do not match the official deployment records</li>
+          <li>proxy or implementation relationships do not match official records</li>
+        </ul>
+      </div>
 
-<p>Import the key into GPG.</p>
-<p class="code">gpg --import pgp-key.txt</p>
-</div>
+      <div class="card_tokenomics">
+        <p>
+          In these cases, do not use the release and treat it as potentially
+          compromised until verified through official channels.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<div class="step">
-<strong>2. Download the signed manifest and release files</strong>
-<p>Download the manifest and its signature.</p>
-<p class="code">curl -LO https://github.com/atamo-atms/atamo-project/releases/download/v1.0.0/manifest-2026-03-14.txt</p>
-<p class="code">curl -LO https://github.com/atamo-atms/atamo-project/releases/download/v1.0.0/manifest-2026-03-14.txt.asc</p>
+  <section id="relation-to-deployment">
+    <div class="container">
+      <h2 class="section-title">5. Relation to contract deployment</h2>
 
-<p>The manifest contains SHA256 checksums for the release files.</p>
+      <div class="card_tokenomics">
+        <p>
+          Release verification is part of the deployment verification chain.
+        </p>
+        <p>
+          Reviewed source code, signed release artifacts, and deployed contracts
+          should remain consistent across:
+        </p>
+        <ul>
+          <li>signed Git tag</li>
+          <li>release artifacts</li>
+          <li>signed checksum manifest</li>
+          <li>deployment manifest</li>
+          <li>deployment records</li>
+          <li>deployment statement</li>
+          <li>contracts page registry</li>
+          <li>verified blockchain records</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<p>Download the source archive (optional, for code verification).</p>
-<p class="code">curl -LO https://github.com/atamo-atms/atamo-project/releases/download/v1.0.0/atamo-v1.0.0-source.tar.gz</p>
-</div>
+  <section id="reviewer-guidance">
+    <div class="container">
+      <h2 class="section-title">6. Reviewer and exchange guidance</h2>
 
-<div class="step">
-<strong>3. Verify the PGP signature of the manifest</strong>
-<p class="code">gpg --verify manifest-2026-03-14.txt.asc manifest-2026-03-14.txt</p>
+      <div class="grid grid-2">
+        <div class="card_tokenomics">
+          <h3>For users</h3>
+          <p>
+            Verify signatures and checksums before using release files in
+            development or interaction.
+          </p>
+          <p>
+            Always verify the official ATMS token proxy address before using any
+            wallet, explorer, exchange, or integration flow.
+          </p>
+        </div>
 
-<p>You should see something like:</p>
-<p class="code">gpg: Good signature from "ATAMO Security &lt;security@atamo-atms.org&gt;"</p>
-</div>
+        <div class="card_tokenomics">
+          <h3>For exchanges and auditors</h3>
+          <p>
+            Validate that deployed contracts correspond to verified source code,
+            that source code corresponds to signed releases, and that all
+            references match the official deployment records.
+          </p>
+          <p>
+            Exchanges should integrate the SecureToken proxy address only.
+            Implementation contracts must not be listed as user-facing token
+            assets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="step">
-<strong>4. Check file integrity using SHA256 checksums</strong>
-<p class="code">sha256sum -c manifest-2026-03-14.txt</p>
+  <section id="official-contract-reference">
+    <div class="container">
+      <h2 class="section-title">7. Official contract reference</h2>
 
-<p>This verifies that all files listed in the manifest match the published checksums.</p>
-</div>
+      <div class="card_tokenomics">
+        <h3>Canonical ATMS token</h3>
+        <p>
+          The official ATAMO token on Ethereum Mainnet is the SecureToken proxy:
+        </p>
+        <p>
+          <span class="code">0x38604c42c16e29BbFbc5479668453f18cB6cf335</span>
+        </p>
+        <p>
+          Users should interact only with the proxy contract. Implementation
+          contracts are for verification and audit review, not normal token
+          interaction.
+        </p>
+      </div>
 
-</div>
+      <div class="card_tokenomics">
+        <h3>Governance and deployment addresses</h3>
 
-</div>
-</section>
+        <p><strong>ATAMO Custodian Safe:</strong></p>
+        <p><span class="code">0xe3b72bdb899364ce86949746D31CCba5f384b949</span></p>
 
-<section>
-<div class="container">
+        <p><strong>Timelock Proxy:</strong></p>
+        <p><span class="code">0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8</span></p>
 
-<div class="notice">
-Always verify releases against the official repository and PGP signature before using them in production environments.
-</div>
+        <p><strong>Timelock Implementation:</strong></p>
+        <p><span class="code">0xb0d8dc6a08Cb4F93a795c53867ac990C8ce4B0E0</span></p>
 
-</div>
-</section>
+        <p><strong>SecureToken Proxy:</strong></p>
+        <p><span class="code">0x38604c42c16e29BbFbc5479668453f18cB6cf335</span></p>
 
+        <p><strong>SecureToken Implementation:</strong></p>
+        <p><span class="code">0xD0E06380aF1927c5d929625406d7E9896a80C09c</span></p>
+
+        <p><strong>ATMSParticipationVault:</strong></p>
+        <p><span class="code">0x01273Ef57CE09C4Aa615E3bd95eF2b9DD54fd0E4</span></p>
+
+        <p><strong>TokenActionRecorder:</strong></p>
+        <p><span class="code">0xAA7152784479Ed53147A12514602968327c9965E</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="canonical-release-model">
+    <div class="container">
+      <h2 class="section-title">8. Canonical release model</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          The canonical ATAMO v1.0.0 Ethereum Mainnet release is defined by:
+        </p>
+        <ul>
+          <li>the signed Git tag <span class="code">v1.0.0</span></li>
+          <li>the signed checksum manifest <span class="code">SHA256SUMS.asc</span></li>
+          <li>the checksum file <span class="code">SHA256SUMS</span></li>
+          <li>the deployment manifest</li>
+          <li>the full deployment records</li>
+          <li>the deployment statement</li>
+          <li>verified Ethereum Mainnet contracts</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="notice">
+        A release is considered valid only when the signed Git tag, signed
+        checksum manifest, artifact hashes, repository references, deployment
+        records, and verified contract deployment are consistent.
+      </div>
+    </div>
+  </section>
 </main>
 
+
 <section class="official-links">
-<div class="container">
+  <div class="container official-links-grid">
 
-<h2>Official Links</h2>
+    <div>
+      <h2>Official Links</h2>
+      <ul>
+        <li><a href="https://atamo-atms.org">Website</a></li>
+        <li><a href="https://github.com/atamo-atms">GitHub</a></li>
+        <li><a href="/.well-known/security.txt">security.txt</a></li>
+        <li><a href="/.well-known/pgp-key.txt">PGP Key</a></li>
+        <li><a href="https://github.com/atamo-atms/atamo-project/tree/main/docs">GitHub Documentation</a></li>
+      </ul>
+    </div>
 
-<ul>
-<li><a href="https://atamo-atms.org">Website</a></li>
-<li><a href="https://github.com/atamo-atms">GitHub</a></li>
-<li><a href="/.well-known/security.txt">security.txt</a></li>
-<li><a href="/.well-known/pgp-key.txt">PGP Key</a></li>
-</ul>
+    <div>
+      <h2>Community</h2>
 
-</div>
+			<a href="https://x.com/ATAMO_ATMS" target="_blank" rel="noopener noreferrer"><span class="icon">𝕏</span></a>
+
+			<a href="https://discord.gg/TYCAYaHaF" target="_blank" rel="noopener noreferrer"><span class="icon">💬</span></a>
+
+			<a href="https://reddit.com/u/ATAMO-project" target="_blank" rel="noopener noreferrer"><span class="icon">👽</span></a>
+    </div>
+
+  </div>
 </section>
 
 <footer>
-<div class="container footer-grid">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand">
+        <img src="logo.webp" alt="ATAMO logo">
+        <span>ATAMO</span>
+      </div>
 
-  <div>
-    <div class="brand">
-      <img src="logo.webp" alt="ATAMO logo">
-      <span>ATAMO</span>
+      <p>Multisig- and timelock-controlled digital asset protocol.</p>
+
+      <p>
+        Official website:
+        <a href="https://atamo-atms.org">atamo-atms.org</a>
+      </p>
+
+      <p>
+        GitHub:
+        <a href="https://github.com/atamo-atms">github.com/atamo-atms</a>
+      </p>
     </div>
 
-    <p>Governance-driven digital asset protocol.</p>
+    <div>
+      <h3>Site</h3>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+		<a href="contracts.html">Contracts</a>
+        <a href="documentation.html">Documentation</a>
+	    <a href="protocol-model.html">Protocol Model</a>
+	    <a href="tokenomics.html">Tokenomics</a>
+	    <a href="admin-powers.html">Admin Powers</a>
+		<a href="participate.html">How to Participate</a>
+        <a class="highlight" href="get-atamo.html">Get ATAMO</a>
+      </div>
+    </div>
 
-    <p>
-      Official website:
-      <a href="https://atamo-atms.org">atamo-atms.org</a>
-    </p>
-
-    <p>
-      GitHub:
-      <a href="https://github.com/atamo-atms">github.com/atamo-atms</a>
-    </p>
-  </div>
-
-  <div>
-    <h3>Site</h3>
-    <div class="footer-links">
-      <a href="security.html">Security</a>
-      <a href="documentation.html">Documentation</a>
-      <a href="get-atamo.html">Get ATAMO</a>
+    <div>
+      <h3>Resources</h3>
+      <div class="footer-links">
+        <a href="security.html">Security</a>
+        <a href="verify.html">Verification Guide</a>
+        <a href="release-verification.html">Release Verification</a>
+        <a href="#top">Top ↑</a>
+      </div>
     </div>
   </div>
 
-  <div>
-    <h3>Resources</h3>
-    <div class="footer-links">
-      <a href="contracts.html">Contracts</a>
-      <a href="verify.html">Verify</a>
-      <a href="release-verification.html">Release Verification</a>
-      <a href="#top">Back to top</a>
-    </div>
+  <div class="footer-bottom">
+    <p>© 2026 ATAMO. All rights reserved.</p>
   </div>
-
-</div>
-
-<div class="footer-bottom">
-  <p>© 2026 ATAMO. All rights reserved.</p>
-</div>
-
 </footer>
 
 </body>

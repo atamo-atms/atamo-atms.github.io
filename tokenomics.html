@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATAMO | Tokenomics</title>
+  <meta name="description" content="Official ATAMO tokenomics defining supply, issuance, governance constraints, demand model, and verifiable execution rules.">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top">
+
+<header class="topbar">
+  <div class="container nav">
+    <a href="index.html" class="brand">
+      <img src="logo.webp" alt="ATAMO logo">
+      <span>ATAMO</span>
+    </a>
+
+	<nav class="nav-links">
+		<a href="contracts.html">Contracts</a>
+
+		<div class="nav-dropdown">
+			<span class="nav-dropdown-label">Documentation</span>
+
+			<div class="dropdown-menu">
+				<a href="documentation.html">Documentation</a>
+				<a href="protocol-model.html">Protocol Model</a>
+				<a href="tokenomics.html">Tokenomics</a>
+			</div>
+		</div>
+
+		<a href="admin-powers.html">Admin Powers</a>
+		
+		<div class="nav-dropdown">
+			<span class="nav-dropdown-label">Verification</span>
+
+			<div class="dropdown-menu">
+				<a href="verify.html">Verification Guide</a>
+				<a href="release-verification.html">Release Verification</a>
+			</div>
+		</div>
+
+		<a href="security.html">Security</a>
+		<a href="participate.html">How to Participate</a>
+		<a class="button button-primary" href="get-atamo.html">Get ATAMO</a>
+	</nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <h1>ATAMO Tokenomics</h1>
+        <p>
+          This page describes the ATAMO supply model, minting limits,
+          participation utility, fee model, and administrative controls based on
+          the deployed Ethereum Mainnet contracts.
+        </p>
+        <p>
+          Tokenomics statements should be evaluated together with verified
+          contract source code, signed Git tags, signed checksum manifests,
+          official deployment records, and public on-chain data.
+        </p>
+      </div>
+
+      <aside class="coin-panel">
+        <img src="logo_main.webp" alt="ATAMO token logo">
+        <div class="coin-meta">
+          <div><strong>Name:</strong> ATAMO</div>
+          <div><strong>Symbol:</strong> ATMS</div>
+          <div><strong>Maximum Supply:</strong> 200,000,000 ATMS</div>
+          <div><strong>Network:</strong> Ethereum Mainnet</div>
+          <div><strong>Standard:</strong> ERC-20</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="protocol-status">
+    <div class="container">
+      <h2>Tokenomics Summary</h2>
+
+      <div class="status-grid">
+        <div class="status-item">
+          <strong>Supply Model</strong>
+          <p>Hard maximum supply: 200,000,000 ATMS.</p>
+        </div>
+
+        <div class="status-item">
+          <strong>Issuance Control</strong>
+          <p>Minting is restricted to timelock-authorized execution within the supply cap.</p>
+        </div>
+
+        <div class="status-item">
+          <strong>Contract Fees</strong>
+          <p>No token-level transfer tax in the current token logic.</p>
+        </div>
+
+        <div class="status-item">
+          <strong>Administrative Model</strong>
+          <p>2-of-3 Safe authorization with timelock-controlled execution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="supply-model">
+    <div class="container">
+      <h2 class="section-title">1. Supply model</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          ATAMO operates under a hard maximum supply of
+          <span class="code">200,000,000 ATMS</span>.
+        </p>
+        <p>
+          The deployed SecureToken contract enforces this cap during mint
+          execution.
+        </p>
+        <p>
+          The cap is enforced in base units using the token's 18 decimals:
+          <span class="code">MAX_SUPPLY * 10 ** decimals()</span>.
+        </p>
+        <p>
+          Maximum supply in base units:
+          <span class="code">200000000000000000000000000</span>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="issuance">
+    <div class="container">
+      <h2 class="section-title">2. Issuance and minting policy</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          Minting is restricted to the timelock-controlled execution path.
+        </p>
+        <p>
+          The mint function is:
+          <span class="code">mintByTimelock(address to, uint256 amountBaseUnits)</span>
+        </p>
+        <p>
+          Minting can only be called by the Timelock and cannot exceed the
+          hard-coded maximum supply.
+        </p>
+        <p>
+          Minting is also blocked while the token is paused.
+        </p>
+        <p>
+          No externally owned wallet can directly mint ATMS through the deployed
+          token logic.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="official-token-reference">
+    <div class="container">
+      <h2 class="section-title">3. Official token reference</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          The official ATAMO token on Ethereum Mainnet is the SecureToken proxy:
+        </p>
+        <p>
+          <span class="code">0x38604c42c16e29BbFbc5479668453f18cB6cf335</span>
+        </p>
+        <p>
+          Users, wallets, exchanges, explorers, analytics providers, and
+          integrations should use the proxy address for token interaction.
+          Implementation contracts are for verification and audit review, not
+          normal token interaction.
+        </p>
+      </div>
+
+      <div class="card_tokenomics">
+        <h3>Related deployment addresses</h3>
+
+        <p><strong>ATAMO Custodian Safe:</strong></p>
+        <p><span class="code">0xe3b72bdb899364ce86949746D31CCba5f384b949</span></p>
+
+        <p><strong>Timelock Proxy:</strong></p>
+        <p><span class="code">0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8</span></p>
+
+        <p><strong>SecureToken Implementation:</strong></p>
+        <p><span class="code">0xD0E06380aF1927c5d929625406d7E9896a80C09c</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="distribution">
+    <div class="container">
+      <h2 class="section-title">4. Distribution disclosure</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          Any allocation table, treasury distribution, vesting arrangement,
+          liquidity plan, or public distribution schedule should be treated as
+          official only when it is published through ATAMO's official references
+          and supported by verifiable on-chain data or signed release records.
+        </p>
+        <p>
+          The current core token contract enforces the maximum supply and
+          timelock-controlled mint authority. It does not by itself enforce a
+          public allocation table, vesting schedule, or liquidity-lock schedule.
+        </p>
+      </div>
+
+      <div class="card_tokenomics">
+        <h3>Distribution verification rule</h3>
+        <ul>
+          <li>verify recipient addresses on-chain</li>
+          <li>verify mint transactions through Timelock and token events</li>
+          <li>verify any vesting or lock contracts separately if published</li>
+          <li>verify signed release artifacts before relying on allocation claims</li>
+          <li>do not rely on screenshots, social posts, or unofficial tokenomics summaries</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="participation-utility">
+    <div class="container">
+      <h2 class="section-title">5. Participation utility</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          ATMS can be used with the ATMSParticipationVault for staking,
+          proposal creation, proposal support, generic signal submission,
+          cooldown-based withdrawals, and penalty-funded reward participation.
+        </p>
+        <p>
+          The Participation Vault is a separate participation and registry layer.
+          It does not directly execute privileged token governance actions.
+        </p>
+      </div>
+
+      <div class="card_tokenomics">
+        <h3>Participation mechanics</h3>
+        <ul>
+          <li>staking creates independent staking lots</li>
+          <li>maximum active lots per wallet is 5</li>
+          <li>participation rights require mature active stake</li>
+          <li>minimum participation stake is 50,000 ATMS</li>
+          <li>reward eligibility age is 30 days</li>
+          <li>proposal support is based on eligible reward-share weight</li>
+          <li>early unstaking may create penalties that fund rewards</li>
+        </ul>
+      </div>
+
+      <div class="card_tokenomics">
+        <h3>Participation contract</h3>
+        <p><strong>ATMSParticipationVault:</strong></p>
+        <p><span class="code">0x01273Ef57CE09C4Aa615E3bd95eF2b9DD54fd0E4</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="staking-and-rewards">
+    <div class="container">
+      <h2 class="section-title">6. Staking and reward model</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          The Participation Vault uses staking lots. Each lot has its own start
+          time, remaining amount, and lifecycle.
+        </p>
+        <p>
+          Reward and support weight are based on eligible mature stake and
+          contract-defined weighting rules.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rule</th>
+              <th>Contract behavior</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Minimum participation stake</td>
+              <td>50,000 ATMS</td>
+            </tr>
+            <tr>
+              <td>Support threshold</td>
+              <td>100,000 ATMS</td>
+            </tr>
+            <tr>
+              <td>Reward eligibility age</td>
+              <td>30 days</td>
+            </tr>
+            <tr>
+              <td>Maximum active lots</td>
+              <td>5 active lots per wallet</td>
+            </tr>
+            <tr>
+              <td>Under 10 day unstake penalty</td>
+              <td>8%</td>
+            </tr>
+            <tr>
+              <td>Under 20 day unstake penalty</td>
+              <td>5%</td>
+            </tr>
+            <tr>
+              <td>Under 30 day unstake penalty</td>
+              <td>2%</td>
+            </tr>
+            <tr>
+              <td>30 to under 365 day multiplier</td>
+              <td>1.0x</td>
+            </tr>
+            <tr>
+              <td>365+ day multiplier</td>
+              <td>1.2x</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="taxes-and-fees">
+    <div class="container">
+      <h2 class="section-title">7. Taxes and fees</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          The current ATAMO token logic does not include buy-tax, sell-tax, or
+          transfer-tax controls.
+        </p>
+        <p>
+          Standard ERC-20 transfers do not apply hidden token-level transfer fees
+          in the current deployed token logic.
+        </p>
+        <p>
+          This should be understood separately from Participation Vault penalties.
+          Early unstake penalties are vault-specific and apply only to vault
+          withdrawal behavior according to contract rules.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="burn-policy">
+    <div class="container">
+      <h2 class="section-title">8. Burn policy</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          The current SecureToken contract does not expose a public burn function.
+        </p>
+        <p>
+          No burn mechanism should be claimed unless a future verified contract
+          upgrade or separate official burn process is published and verified.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="administrative-control">
+    <div class="container">
+      <h2 class="section-title">9. Administrative control and upgrade constraints</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          Administrative authority exists and is disclosed. It is constrained
+          through Safe authorization, Timelock scheduling, and contract-level
+          checks.
+        </p>
+        <p>
+          The protocol is not immutable. Future governance-approved upgrades may
+          change behavior. Users and integrators should monitor governance
+          activity continuously.
+        </p>
+      </div>
+
+      <div class="card_tokenomics">
+        <h3>Current hard constraints</h3>
+        <ul>
+          <li>minting must pass the token's maximum supply check</li>
+          <li>minting is restricted to the Timelock</li>
+          <li>pausing and unpausing are restricted to the Timelock</li>
+          <li>SecureToken upgrades require explicit upgrade approval</li>
+          <li>Timelock upgrades must be executed through Timelock self-call authorization</li>
+          <li>administrative actions are intended to be visible before execution through timelock scheduling</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="governance-contracts">
+    <div class="container">
+      <h2 class="section-title">10. Governance and participation contracts</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Address</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ATAMO Custodian Safe</td>
+              <td><span class="code">0xe3b72bdb899364ce86949746D31CCba5f384b949</span></td>
+              <td>Root multisignature governance authority</td>
+            </tr>
+            <tr>
+              <td>Timelock Proxy</td>
+              <td><span class="code">0x2778BC96422AeD7D7Ac7CE21372Aa42c525A86B8</span></td>
+              <td>Delayed governance execution layer</td>
+            </tr>
+            <tr>
+              <td>TokenActionRecorder</td>
+              <td><span class="code">0xAA7152784479Ed53147A12514602968327c9965E</span></td>
+              <td>Governance metadata and action recorder</td>
+            </tr>
+            <tr>
+              <td>ATMSParticipationVault</td>
+              <td><span class="code">0x01273Ef57CE09C4Aa615E3bd95eF2b9DD54fd0E4</span></td>
+              <td>Staking, proposal, support, and rewards layer</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="anti-manipulation">
+    <div class="container">
+      <h2 class="section-title">11. Anti-manipulation controls</h2>
+
+      <div class="card_tokenomics">
+        <ul>
+          <li>no token-level transfer tax in the current token logic</li>
+          <li>no token blacklist function in the current token logic</li>
+          <li>no unrestricted public mint function</li>
+          <li>no direct single-wallet token administration path</li>
+          <li>minting cannot exceed the hard maximum supply through the defined mint path</li>
+        </ul>
+      </div>
+
+      <div class="card_tokenomics">
+        <p>
+          These controls do not remove all governance or upgrade risk. They define
+          the current deployed contract behavior and the current governance
+          constraints.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="transparency">
+    <div class="container">
+      <h2 class="section-title">12. Transparency</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          Contract addresses, governance relationships, release artifacts, and
+          verification references should remain publicly reviewable.
+        </p>
+        <p>
+          Users should verify contract addresses against the official contracts
+          page, signed Git tags, signed checksum manifests, verified blockchain
+          records, and repository documentation before relying on any tokenomics
+          claim.
+        </p>
+      </div>
+
+      <div class="card_tokenomics">
+        <h3>Release verification artifacts</h3>
+        <ul>
+          <li><span class="code">releases/v1.0.0/deployment-manifest.mainnet.json</span></li>
+          <li><span class="code">releases/v1.0.0/deployment-records-full.mainnet.json</span></li>
+          <li><span class="code">releases/v1.0.0/ATAMO_DEPLOYMENT_STATEMENT_mainnet_2026-05-16.txt</span></li>
+          <li><span class="code">releases/v1.0.0/SHA256SUMS</span></li>
+          <li><span class="code">releases/v1.0.0/SHA256SUMS.asc</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="important-disclosure">
+    <div class="container">
+      <h2 class="section-title">13. Important disclosure</h2>
+
+      <div class="card_tokenomics">
+        <p>
+          ATAMO operates with controlled administrative authority enforced through
+          Safe multisignature and Timelock systems.
+        </p>
+        <p>
+          ATMS does not represent equity, ownership, dividends, profit share,
+          legal claims, guaranteed liquidity, guaranteed market value, or
+          guaranteed exchange listing.
+        </p>
+        <p>
+          Users interact with smart contracts at their own risk and should verify
+          all contract addresses and transaction prompts before signing.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<section class="official-links">
+  <div class="container official-links-grid">
+
+    <div>
+      <h2>Official Links</h2>
+      <ul>
+        <li><a href="https://atamo-atms.org">Website</a></li>
+        <li><a href="https://github.com/atamo-atms">GitHub</a></li>
+        <li><a href="/.well-known/security.txt">security.txt</a></li>
+        <li><a href="/.well-known/pgp-key.txt">PGP Key</a></li>
+        <li><a href="https://github.com/atamo-atms/atamo-project/tree/main/docs">GitHub Documentation</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2>Community</h2>
+
+			<a href="https://x.com/ATAMO_ATMS" target="_blank" rel="noopener noreferrer"><span class="icon">𝕏</span></a>
+
+			<a href="https://discord.gg/TYCAYaHaF" target="_blank" rel="noopener noreferrer"><span class="icon">💬</span></a>
+
+			<a href="https://reddit.com/u/ATAMO-project" target="_blank" rel="noopener noreferrer"><span class="icon">👽</span></a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <div class="brand">
+        <img src="logo.webp" alt="ATAMO logo">
+        <span>ATAMO</span>
+      </div>
+
+      <p>Multisig- and timelock-controlled digital asset protocol.</p>
+
+      <p>
+        Official website:
+        <a href="https://atamo-atms.org">atamo-atms.org</a>
+      </p>
+
+      <p>
+        GitHub:
+        <a href="https://github.com/atamo-atms">github.com/atamo-atms</a>
+      </p>
+    </div>
+
+    <div>
+      <h3>Site</h3>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+		<a href="contracts.html">Contracts</a>
+        <a href="documentation.html">Documentation</a>
+	    <a href="protocol-model.html">Protocol Model</a>
+	    <a href="tokenomics.html">Tokenomics</a>
+	    <a href="admin-powers.html">Admin Powers</a>
+		<a href="participate.html">How to Participate</a>
+        <a class="highlight" href="get-atamo.html">Get ATAMO</a>
+      </div>
+    </div>
+
+    <div>
+      <h3>Resources</h3>
+      <div class="footer-links">
+        <a href="security.html">Security</a>
+        <a href="verify.html">Verification Guide</a>
+        <a href="release-verification.html">Release Verification</a>
+        <a href="#top">Top ↑</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 ATAMO. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
